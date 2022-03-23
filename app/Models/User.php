@@ -10,6 +10,10 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -17,6 +21,10 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use SoftDeletes;
+
+    protected $table = 'users';
+    protected $primaryKey = 'id_user';
 
     /**
      * The attributes that are mass assignable.
@@ -24,9 +32,12 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
+        'user_type',
         'name',
+        'lastname',
         'email',
         'password',
+        'active',
     ];
 
     /**
@@ -39,6 +50,13 @@ class User extends Authenticatable
         'remember_token',
         'two_factor_recovery_codes',
         'two_factor_secret',
+
+        'created_at',
+        'updated_at',
+        'deleted_at',
+        'created_by',
+        'updated_by',
+        'deleted_by',
     ];
 
     /**
@@ -58,4 +76,8 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    // Relationships
+
+
 }
