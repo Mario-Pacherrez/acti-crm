@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('channels_has_clients_leads', function (Blueprint $table) {
-            $table->id('id_channel_has_client_lead');
-            $table->unsignedInteger('fk_client_lead');
-            $table->unsignedInteger('fk_channel');
+            $table->mediumIncrements('id_channel_has_client_lead');
+            $table->unsignedBigInteger('fk_client_lead');
+            $table->unsignedTinyInteger('fk_channel');
             $table->boolean('active')->default(true);
             $table->timestamps();
             $table->softDeletes();

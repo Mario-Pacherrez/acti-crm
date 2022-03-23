@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('leads_status', function (Blueprint $table) {
-            $table->id('id_lead_status');
+            $table->tinyIncrements('id_lead_status');
             $table->string('status_name', 50)->nullable();
             $table->boolean('active')->default(true);
             $table->timestamps();

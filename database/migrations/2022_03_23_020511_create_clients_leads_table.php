@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('clients_leads', function (Blueprint $table) {
-            $table->id('id_client_lead');
+            $table->bigIncrements('id_client_lead');
             $table->string('names', 150)->nullable();
             $table->string('email', 150)->unique();
             $table->string('phone', 100)->nullable();

@@ -14,10 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users_has_clients_leads', function (Blueprint $table) {
-            $table->id('id_user_has_client_lead');
-            $table->unsignedInteger('fk_user');
-            $table->unsignedInteger('fk_client_lead');
-            $table->unsignedInteger('fk_lead_status');
+            $table->mediumIncrements('id_user_has_client_lead');
+            $table->unsignedBigInteger('fk_user');
+            $table->unsignedBigInteger('fk_client_lead');
+            $table->unsignedTinyInteger('fk_lead_status');
             $table->boolean('active')->default(true);
             $table->string('status', 70)->nullable();
             $table->timestamps();

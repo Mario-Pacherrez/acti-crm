@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('leads_details', function (Blueprint $table) {
-            $table->id('id_lead_detail');
-            $table->unsignedInteger('fk_client_lead');
+            $table->bigIncrements('id_lead_detail');
+            $table->unsignedBigInteger('fk_client_lead');
             $table->string('title', 70)->nullable();
             $table->dateTime('detail_date')->nullable();
             $table->text('description')->nullable();
