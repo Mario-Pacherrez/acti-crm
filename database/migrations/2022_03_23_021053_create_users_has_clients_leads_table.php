@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('users_has_clients_leads', function (Blueprint $table) {
             $table->mediumIncrements('id_user_has_client_lead');
-            $table->unsignedBigInteger('fk_user');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('fk_client_lead');
             $table->unsignedTinyInteger('fk_lead_status');
             $table->boolean('active')->default(true);
@@ -26,7 +26,7 @@ return new class extends Migration
             $table->integer('updated_by')->nullable();
             $table->integer('deleted_by')->nullable();
 
-            $table->foreign('fk_user')->references('id_user')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('fk_client_lead')->references('id_client_lead')->on('clients_leads');
             $table->foreign('fk_lead_status')->references('id_lead_status')->on('leads_status');
 

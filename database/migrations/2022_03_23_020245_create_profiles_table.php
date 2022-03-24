@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->bigIncrements('id_profile');
-            $table->unsignedBigInteger('fk_user');
+            $table->unsignedBigInteger('user_id');
             $table->string('photo_path', 150)->nullable();
             $table->string('document_type', 15)->nullable();
             $table->string('document_number', 30)->nullable();
@@ -28,7 +28,7 @@ return new class extends Migration
             $table->integer('updated_by')->nullable();
             $table->integer('deleted_by')->nullable();
 
-            $table->foreign('fk_user')->references('id_user')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
 
             $table->charset = 'utf8';
             $table->collation = 'utf8_general_ci';

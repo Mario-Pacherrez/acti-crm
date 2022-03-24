@@ -27,3 +27,14 @@ Route::get('/cmd/{command}', function ($command) {
     Artisan::call($command);
     dd(Artisan::output());
 });
+
+Route::get('/run-migrations', function () {
+    return Artisan::call('migrate', ["--force" => true ]);
+});
+
+/*
+ *
+ * Route::get('/run-migrations', function () {
+    return Artisan::call('migrate', ["--force" => true ]);
+});
+ */
