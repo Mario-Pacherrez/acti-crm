@@ -24,7 +24,7 @@ class User extends Authenticatable
     use SoftDeletes;
 
     protected $table = 'users';
-    protected $primaryKey = 'id_user';
+    protected $primaryKey = 'id';
 
     /**
      * The attributes that are mass assignable.
@@ -33,6 +33,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'user_type',
+        'nickname',
         'name',
         'lastname',
         'email',
@@ -51,12 +52,14 @@ class User extends Authenticatable
         'two_factor_recovery_codes',
         'two_factor_secret',
 
+        /*
         'created_at',
         'updated_at',
         'deleted_at',
         'created_by',
         'updated_by',
-        'deleted_by',
+        'deleted_by',*/
+
     ];
 
     /**
