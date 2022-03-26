@@ -9,5 +9,19 @@ class Channel extends Model
 {
     use HasFactory;
 
+    protected $table = 'channels';
+    protected $primaryKey = 'id_channel';
 
+    protected $fillable = [
+        'channel_name',
+        'active',
+    ];
+
+    protected $hidden = [
+        'created_by',
+        'updated_by',
+        'deleted_by',
+    ];
+
+    // Relationships
 }

@@ -3,4 +3,3 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home2/sisgnuin/public_html/public/
     - /bin/rsync -a --exclude 'index.php' public/ $DEPLOYPATH
-    
