@@ -82,4 +82,8 @@ class User extends Authenticatable
 
     // Relationships
 
+    public function profiles()
+    {
+        return $this->hasOne();
+    }
 }
