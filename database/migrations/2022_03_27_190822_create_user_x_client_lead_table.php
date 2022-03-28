@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users_has_clients_leads', function (Blueprint $table) {
-            $table->mediumIncrements('id_user_has_client_lead');
+        Schema::create('user_x_client_lead', function (Blueprint $table) {
+            $table->mediumIncrements('id_user_x_client_lead');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('fk_client_lead');
             $table->unsignedTinyInteger('fk_lead_status');
@@ -42,6 +42,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_has_clients_leads');
+        Schema::dropIfExists('user_x_client_lead');
     }
 };

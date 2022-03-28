@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('channels_has_clients_leads', function (Blueprint $table) {
-            $table->mediumIncrements('id_channel_has_client_lead');
-            $table->unsignedBigInteger('fk_client_lead');
+        Schema::create('channel_x_client_lead', function (Blueprint $table) {
+            $table->mediumIncrements('id_channel_x_client_lead');
             $table->unsignedTinyInteger('fk_channel');
+            $table->unsignedBigInteger('fk_client_lead');
             $table->boolean('active')->default(true);
             $table->timestamps();
             $table->softDeletes();
@@ -24,8 +24,8 @@ return new class extends Migration
             $table->integer('updated_by')->nullable();
             $table->integer('deleted_by')->nullable();
 
-            $table->foreign('fk_client_lead')->references('id_client_lead')->on('clients_leads');
             $table->foreign('fk_channel')->references('id_channel')->on('channels');
+            $table->foreign('fk_client_lead')->references('id_client_lead')->on('clients_leads');
 
             $table->charset = 'utf8';
             $table->collation = 'utf8_general_ci';
@@ -39,6 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('channels_has_clients_leads');
+        Schema::dropIfExists('channel_x_client_lead');
     }
 };

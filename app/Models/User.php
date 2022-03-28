@@ -80,9 +80,13 @@ class User extends Authenticatable
     ];
 
     // Relationships
-
-    public function profiles()
+    public function profiles(): HasOne
     {
-        return $this->hasOne();
+        return $this->hasOne(Profile::class, 'user_id', 'id');
+    }
+
+    public function leadsStatus(): BelongsToMany
+    {
+        return $this->belongsToMany(LeadStatus::class, '', '', '');
     }
 }
