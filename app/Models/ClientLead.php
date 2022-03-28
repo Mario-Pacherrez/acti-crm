@@ -32,4 +32,18 @@ class ClientLead extends Model
     ];
 
     // Relationships
+    public function channels(): BelongsToMany
+    {
+        return $this->belongsToMany(Channel::class, 'channel_x_client_lead', 'fk_client_lead', 'fk_channel');
+    }
+
+    public function users(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'user_x_client_lead', 'fk_client_lead', 'user_id');
+    }
+
+    public function leadsDetails(): HasMany
+    {
+        return $this->hasMany(LeadDetail::class, 'fk_client_lead', 'id_client_lead');
+    }
 }

@@ -27,4 +27,8 @@ class LeadDetail extends Model
     ];
 
     // Relationships
+    public function clientLead(): BelongsTo
+    {
+        return $this->belongsTo(ClientLead::class, 'fk_client_lead', 'id_client_lead');
+    }
 }

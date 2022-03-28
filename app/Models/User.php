@@ -12,6 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
@@ -80,13 +81,19 @@ class User extends Authenticatable
     ];
 
     // Relationships
-    public function profiles(): HasOne
+    public function profile(): HasOne
     {
         return $this->hasOne(Profile::class, 'user_id', 'id');
     }
 
-    public function leadsStatus(): BelongsToMany
+    public function clientsLeads(): BelongsToMany
     {
-        return $this->belongsToMany(LeadStatus::class, '', '', '');
+        return $this->belongsToMany(ClientLead::class, 'user_x_client_lead', 'user_id', 'fk_client_lead');
     }
+
+    /*
+    public function leadsStatus(): BelongsTo
+    {
+        return $this->belongsTo(LeadStatus::class, '', '');
+    }*/
 }

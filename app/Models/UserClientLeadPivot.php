@@ -18,6 +18,7 @@ class UserClientLeadPivot extends Model
 
     protected $fillable = [
         'active',
+        'status',
     ];
 
     protected $hidden = [
