@@ -22,10 +22,10 @@ class ClientLead extends Model
         'email',
         'phone',
         'courses_name',
+        'active',
     ];
 
     protected $hidden = [
-        'active',
         'created_by',
         'updated_by',
         'deleted_by',

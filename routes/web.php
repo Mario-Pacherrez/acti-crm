@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Artisan;
 |
 */
 
+/* Package: Client Lead */
+use App\Http\Controllers\Web\Lead\ClientLeadController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -23,13 +26,19 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 // Ruta para ejecutar comandos artisan desde la web
+/*
 Route::get('/cmd/{command}', function ($command) {
     Artisan::call($command);
     dd(Artisan::output());
-});
+});*/
 
+/*
 Route::get('/run-migrations', function () {
     return Artisan::call('migrate', ["--force" => true ]);
+});*/
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('leads', ClientLeadController::class);
 });
 
 /*
