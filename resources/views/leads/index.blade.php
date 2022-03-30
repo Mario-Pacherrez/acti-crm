@@ -1,15 +1,16 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Clientes Potenciales') }}
+            {{ __('Lista de Clientes Potenciales') }}
         </h2>
     </x-slot>
 
     <div>
-        <div class="max-w-6xl mx-auto py-10 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto py-10 sm:px-6 lg:px-8 w-full">
             <div class="block mb-8">
                 <a href="{{ route('leads.create') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Crear Leads</a>
             </div>
+
             <div class="flex flex-col">
                 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -17,27 +18,49 @@
                             <table class="min-w-full divide-y divide-gray-200 w-full">
                                 <thead>
                                     <tr>
-                                        <th scope="col" width="50" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            ID
+                                        <th scope="col" class="px-6 py-3 bg-indigo-200 text-left border-r text-sm">
+                                            Nombres y Apellidos
                                         </th>
-                                        <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Nombres
-                                        </th>
-                                        <th scope="col" width="200" class="px-6 py-3 bg-gray-50">
+                                        <th scope="col" class="px-6 py-3 bg-indigo-200 text-left border-r text-sm">
                                             Email
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 bg-indigo-200 border-r text-sm">
+                                            Teléfono
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 bg-indigo-200 border-r text-sm">
+                                            Nombre de curso(s)
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 bg-indigo-200 border-r text-sm">
+                                            Fecha de Creación
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 bg-indigo-200 border-r text-sm">
+                                            Acción
                                         </th>
                                     </tr>
                                 </thead>
 
                                 <tbody class="bg-white divide-y divide-gray-200">
+
                                     @foreach ($leads as $lead)
-                                        <tr>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                                {{ $lead->id_client_lead }}
+                                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-600">
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 border-r">
+                                                {{ $lead->names }}
                                             </td>
 
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                                {{ $lead->names }}
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 border-r">
+                                                {{ $lead->email }}
+                                            </td>
+
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 border-r">
+                                                {{ $lead->phone }}
+                                            </td>
+
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 border-r">
+                                                {{ $lead->courses_name }}
+                                            </td>
+
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 border-r">
+                                                {{ $lead->created_at }}
                                             </td>
 
                                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
@@ -51,6 +74,7 @@
                                             </td>
                                         </tr>
                                     @endforeach
+
                                 </tbody>
 
                             </table>

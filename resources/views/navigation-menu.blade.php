@@ -18,10 +18,18 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('leads.index') }}" :active="request()->routeIs('leads.index')">
+                    <x-jet-nav-link href="{{ route('leads.index') }}" :active="request()->routeIs('leads.*')">
                         {{ __('Leads') }}
                     </x-jet-nav-link>
                 </div>
+
+                @can('user_access')
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.*')">
+                            {{ __('Usuarios') }}
+                        </x-jet-nav-link>
+                    </div>
+                @endcan
 
             </div>
 
@@ -104,7 +112,7 @@
                             </div>
 
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('Profile') }}
+                                {{ __('Perfil') }}
                             </x-jet-dropdown-link>
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -121,7 +129,7 @@
 
                                 <x-jet-dropdown-link href="{{ route('logout') }}"
                                          @click.prevent="$root.submit();">
-                                    {{ __('Log Out') }}
+                                    {{ __('Cerrar Sesión') }}
                                 </x-jet-dropdown-link>
                             </form>
                         </x-slot>
@@ -167,7 +175,7 @@
             <div class="mt-3 space-y-1">
                 <!-- Account Management -->
                 <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-                    {{ __('Profile') }}
+                    {{ __('Perfil') }}
                 </x-jet-responsive-nav-link>
 
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -182,7 +190,7 @@
 
                     <x-jet-responsive-nav-link href="{{ route('logout') }}"
                                    @click.prevent="$root.submit();">
-                        {{ __('Log Out') }}
+                        {{ __('Cerrar Sesión') }}
                     </x-jet-responsive-nav-link>
                 </form>
 

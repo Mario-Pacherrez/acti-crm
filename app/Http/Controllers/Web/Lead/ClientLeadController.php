@@ -33,14 +33,14 @@ class ClientLeadController extends Controller
         return view('leads.show', compact('lead'));
     }
 
-    public function edit(ClientLead $clientLead)
+    public function edit(ClientLead $lead)
     {
-        return view('leads.edit', compact('clientLead'));
+        return view('leads.edit', compact('lead'));
     }
 
-    public function update(UpdateClientLeadRequest $request, ClientLead $clientLead)
+    public function update(UpdateClientLeadRequest $request, ClientLead $lead)
     {
-        $clientLead->update($request->validated());
+        $lead->update($request->validated());
         return redirect()->route('leads.index');
     }
 

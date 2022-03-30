@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Artisan;
 /* Package: Client Lead */
 use App\Http\Controllers\Web\Lead\ClientLeadController;
 
+/* Package: User */
+use App\Http\Controllers\Web\User\UserController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -39,6 +42,7 @@ Route::get('/run-migrations', function () {
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('leads', ClientLeadController::class);
+    Route::resource('users', UserController::class);
 });
 
 /*
