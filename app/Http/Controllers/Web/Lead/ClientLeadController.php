@@ -44,9 +44,9 @@ class ClientLeadController extends Controller
         return redirect()->route('leads.index');
     }
 
-    public function destroy(ClientLead $clientLead)
+    public function destroy(ClientLead $lead)
     {
-        $clientLead->delete();
+        $lead->delete();
         return redirect()->route('leads.index');
     }
 }

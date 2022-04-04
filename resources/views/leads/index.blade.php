@@ -65,11 +65,11 @@
 
                                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                                 <a href="{{ route('leads.show', $lead->id_client_lead) }}" class="text-blue-600 hover:text-blue-900 mb-2 mr-2">Ver</a>
-                                                <a href="{{ route('leads.edit', $lead->id_client_lead) }}" class="text-indigo-600 hover:text-indigo-900 mb-2 mr-2">Editar</a>
+                                                <a href="{{ route('leads.edit', $lead->id_client_lead) }}" class="px-4 py-1 text-sm text-white bg-blue-400 rounded">Editar</a>
                                                 <form class="inline-block" action="{{ route('leads.destroy', $lead->id_client_lead) }}" method="POST" onsubmit="return confirm('¿Está seguro?');">
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                    <input type="submit" class="text-red-600 hover:text-red-900 mb-2 mr-2" value="Eliminar">
+                                                    <input type="submit" class="px-4 py-1 text-sm text-white bg-red-400 rounded" value="Eliminar">
                                                 </form>
                                             </td>
                                         </tr>
