@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html :class="{ 'theme-dark': dark }" x-data="data()" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,53 +13,39 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
-        <!-- hide elements while page load -->
-        <style>
-            [x-cloak] {
-                display: none;
-            }
-        </style>
+        <link rel="stylesheet" href="{{ asset("css/tailwind.output.css") }}">
 
         @livewireStyles
 
         <!-- Scripts -->
-        <script src="{{ mix('js/app.js') }}" defer></script>
+        <script src="{{ asset("/js/alpine.min.js") }}" defer></script>
+
+        <script src="{{ asset('js/init-alpine.js') }}"></script>
     </head>
+
     <body class="font-sans antialiased">
+        {{--<x-jet-banner />--}}
 
-    <div id="app" class="min-h-screen bg-gray-100">
-        <div class="flex">
-            <div class="flex flex-col">
-                <!--- Sidebar --->
-                <h2 class="text-3xl font-semibold text-center text-blue-800">Logo</h2>
-                @include('frontend.includes.sidebar')
+        <div class="flex h-screen bg-gray-100 dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }">
+        {{--<div class="flex-col w-full md:flex md:flex-row md:min-h-screen">--}}
+            <!-- Desktop sidebar -->
+            @include('frontend.includes.sidebar')
 
-                <div class="w-full md:flex-1">
-                    @livewire('navigation-menu')
+            <!-- Mobile sidebar -->
+            <!-- Backdrop -->
+            {{--@include('frontend.includes.mobile-sidebar')--}}
 
 
-                    <!-- Page Heading -->
-                {{--@if (isset($header))
-                    <header class="bg-white shadow">
-                        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                            {{ $header }}
-                        </div>
-                    </header>
-                @endif--}}
+            <!-- Header -->
+            <div class="flex flex-col flex-1 w-full">
+                @include('frontend.includes.header')
 
                 <!-- Page Content -->
-                    <main>
-                        {{ $slot }}
-                    </main>
-                </div>
-
+                <main class="h-full overflow-y-auto">
+                    {{ $slot }}
+                </main>
             </div>
         </div>
-
-
-    </div>
-        <!--  <x-jet-banner /> -->
-
 
         @stack('modals')
 

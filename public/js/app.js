@@ -1422,7 +1422,7 @@ var Alpine = {
   get raw() {
     return raw;
   },
-  version: "3.9.2",
+  version: "3.9.5",
   flushAndStopDeferringMutations,
   disableEffectScheduling,
   setReactivityEngine,
@@ -2549,7 +2549,12 @@ directive("html", (el, {expression}, {effect: effect3, evaluateLater: evaluateLa
   let evaluate2 = evaluateLater2(expression);
   effect3(() => {
     evaluate2((value) => {
-      el.innerHTML = value;
+      mutateDom(() => {
+        el.innerHTML = value;
+        el._x_ignoreSelf = true;
+        initTree(el);
+        delete el._x_ignoreSelf;
+      });
     });
   });
 });
@@ -5073,6 +5078,10 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
 
+__webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/module.esm.js");
+
+__webpack_require__(/*! ./init-alpine */ "./resources/js/init-alpine.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -5103,6 +5112,74 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/init-alpine.js":
+/*!*************************************!*\
+  !*** ./resources/js/init-alpine.js ***!
+  \*************************************/
+/***/ (() => {
+
+function data() {
+  function getThemeFromLocalStorage() {
+    // if user already changed the theme, use it
+    if (window.localStorage.getItem('dark')) {
+      return JSON.parse(window.localStorage.getItem('dark'));
+    } // else return their preferences
+
+
+    return !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+
+  function setThemeToLocalStorage(value) {
+    window.localStorage.setItem('dark', value);
+  }
+
+  return {
+    dark: getThemeFromLocalStorage(),
+    toggleTheme: function toggleTheme() {
+      this.dark = !this.dark;
+      setThemeToLocalStorage(this.dark);
+    },
+    isSideMenuOpen: false,
+    toggleSideMenu: function toggleSideMenu() {
+      this.isSideMenuOpen = !this.isSideMenuOpen;
+    },
+    closeSideMenu: function closeSideMenu() {
+      this.isSideMenuOpen = false;
+    },
+    isNotificationsMenuOpen: false,
+    toggleNotificationsMenu: function toggleNotificationsMenu() {
+      this.isNotificationsMenuOpen = !this.isNotificationsMenuOpen;
+    },
+    closeNotificationsMenu: function closeNotificationsMenu() {
+      this.isNotificationsMenuOpen = false;
+    },
+    isProfileMenuOpen: false,
+    toggleProfileMenu: function toggleProfileMenu() {
+      this.isProfileMenuOpen = !this.isProfileMenuOpen;
+    },
+    closeProfileMenu: function closeProfileMenu() {
+      this.isProfileMenuOpen = false;
+    },
+    isPagesMenuOpen: false,
+    togglePagesMenu: function togglePagesMenu() {
+      this.isPagesMenuOpen = !this.isPagesMenuOpen;
+    },
+    // Modal
+    isModalOpen: false,
+    trapCleanup: null,
+    openModal: function openModal() {
+      this.isModalOpen = true;
+      this.trapCleanup = focusTrap(document.querySelector('#modal'));
+    },
+    closeModal: function closeModal() {
+      this.isModalOpen = false;
+      this.trapCleanup();
+    }
+  };
+}
 
 /***/ }),
 

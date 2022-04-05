@@ -21,7 +21,8 @@ use App\Http\Controllers\Web\Lead\ClientLeadController;
 use App\Http\Controllers\Web\User\UserController;
 
 Route::get('/', function () {
-    return view('welcome');
+    //return view('welcome');
+    return redirect(route('login'));
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
