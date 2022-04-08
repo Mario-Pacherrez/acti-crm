@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('clients_leads', function (Blueprint $table) {
             $table->bigIncrements('id_client_lead');
+            $table->unsignedTinyInteger('fk_lead_status');
             $table->string('names', 150)->nullable();
-            $table->string('email', 150)->unique();
+            $table->string('email', 150)->nullable();
             $table->string('phone', 100)->nullable();
             $table->string('courses_name', 100)->nullable();
             $table->boolean('active')->default(true);
@@ -25,6 +26,8 @@ return new class extends Migration
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
             $table->integer('deleted_by')->nullable();
+
+            $table->foreign('fk_lead_status')->references('id_lead_status')->on('leads_status');
 
             $table->charset = 'utf8';
             $table->collation = 'utf8_general_ci';

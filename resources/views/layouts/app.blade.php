@@ -8,17 +8,22 @@
         <title>@yield('title', 'Inicio')</title>
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+        {{--<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">--}}
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
         <link rel="stylesheet" href="{{ asset("css/tailwind.output.css") }}">
 
+        {{--<link rel="stylesheet" href="{{ asset("css/acti.css") }}">--}}
+
         @livewireStyles
 
         <!-- Scripts -->
-        <script src="{{ asset("/js/alpine.min.js") }}" defer></script>
+        {{--<script src="{{ asset("/js/alpine.min.js") }}" defer></script>--}}
+
+        <script src="{{ mix('js/app.js') }}" defer></script>
 
         <script src="{{ asset('js/init-alpine.js') }}"></script>
     </head>
@@ -38,7 +43,8 @@
 
             <!-- Header -->
             <div class="flex flex-col flex-1 w-full">
-                @include('frontend.includes.header')
+                @livewire('navigation-menu')
+                {{--@include('frontend.includes.header')--}}
 
                 <!-- Page Content -->
                 <main class="h-full overflow-y-auto">

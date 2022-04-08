@@ -19,17 +19,22 @@ class LeadStatus extends Model
     protected $fillable = [
         'status_name',
         'active',
+        'created_by',
     ];
 
     protected $hidden = [
-        'created_by',
         'updated_by',
         'deleted_by',
     ];
 
     // Relationships
-    public function usersClientsLeads(): HasMany
+    /*public function usersClientsLeads(): HasMany
     {
         return $this->hasMany(UserClientLeadPivot::class, 'fk_lead_status', 'id_lead_status');
+    }*/
+
+    public function clientsLeads(): HasMany
+    {
+        return $this->hasMany(ClientLead::class, 'fk_lead_status', 'id_lead_status');
     }
 }

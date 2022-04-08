@@ -24,10 +24,13 @@ class StoreClientLeadRequest extends FormRequest
     public function rules()
     {
         return [
+            'channels' => 'required',
+            'users' => 'required',
             'names' => 'required|string|max:150',
             'email' => 'required|string|max:150|unique:clients_leads,email',
             'phone' => 'required|string|max:100',
             'courses_name' => 'required|string|max:100',
+
         ];
     }
 

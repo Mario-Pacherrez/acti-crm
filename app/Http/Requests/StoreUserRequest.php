@@ -24,7 +24,20 @@ class StoreUserRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nickname' => 'required|string|max:150|unique:users,nickname',
+            'name' => 'required|string|max:50',
+            'lastname' => 'required|string|max:50',
+            'email' => 'required|string|max:150|unique:users,email',
+            'password' => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'nickname.required' => 'El nombre de usuario es requerido.',
+            'name.required' => 'El campo Nombre(s) es requerido.',
+            'lastname.required' => 'El campo Apellidos es requerido.',
         ];
     }
 }

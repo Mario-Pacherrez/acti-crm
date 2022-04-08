@@ -18,6 +18,9 @@
                             <table class="min-w-full divide-y divide-gray-200 w-full">
                                 <thead>
                                     <tr>
+                                        <th scope="col" class="px-6 py-3 bg-indigo-200 border-r text-sm">
+                                            Fecha de Registro
+                                        </th>
                                         <th scope="col" class="px-6 py-3 bg-indigo-200 text-left border-r text-sm">
                                             Nombres y Apellidos
                                         </th>
@@ -30,9 +33,11 @@
                                         <th scope="col" class="px-6 py-3 bg-indigo-200 border-r text-sm">
                                             Nombre de curso(s)
                                         </th>
+
                                         <th scope="col" class="px-6 py-3 bg-indigo-200 border-r text-sm">
-                                            Fecha de Creación
+                                            Medios
                                         </th>
+
                                         <th scope="col" class="px-6 py-3 bg-indigo-200 border-r text-sm">
                                             Acción
                                         </th>
@@ -43,6 +48,10 @@
 
                                     @foreach ($leads as $lead)
                                         <tr class="hover:bg-gray-50 dark:hover:bg-gray-600">
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 border-r">
+                                                {{ $lead->created_at }}
+                                            </td>
+
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 border-r">
                                                 {{ $lead->names }}
                                             </td>
@@ -60,8 +69,12 @@
                                             </td>
 
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 border-r">
-                                                {{ $lead->created_at }}
+                                                @foreach ($lead->channels as $channel)
+                                                    {{ $channel->channel_name}}
+                                                @endforeach
                                             </td>
+
+
 
                                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                                 <a href="{{ route('leads.show', $lead->id_client_lead) }}" class="text-blue-600 hover:text-blue-900 mb-2 mr-2">Ver</a>

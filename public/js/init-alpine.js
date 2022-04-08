@@ -29,13 +29,16 @@ function data() {
         closeSideMenu() {
             this.isSideMenuOpen = false
         },
+
+        /*
         isNotificationsMenuOpen: false,
         toggleNotificationsMenu() {
             this.isNotificationsMenuOpen = !this.isNotificationsMenuOpen
         },
         closeNotificationsMenu() {
             this.isNotificationsMenuOpen = false
-        },
+        },*/
+
         isProfileMenuOpen: false,
         toggleProfileMenu() {
             this.isProfileMenuOpen = !this.isProfileMenuOpen

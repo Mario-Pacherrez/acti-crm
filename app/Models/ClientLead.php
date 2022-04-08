@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class ClientLead extends Model
@@ -40,6 +41,11 @@ class ClientLead extends Model
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'user_x_client_lead', 'fk_client_lead', 'user_id');
+    }
+
+    public function leadStatus(): BelongsTo
+    {
+        return $this->belongsTo(LeadStatus::class, 'fk_lead_status', 'id_lead_status');
     }
 
     public function leadsDetails(): HasMany

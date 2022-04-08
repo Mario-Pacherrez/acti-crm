@@ -17,7 +17,7 @@ return new class extends Migration
             $table->mediumIncrements('id_user_x_client_lead');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('fk_client_lead');
-            $table->unsignedTinyInteger('fk_lead_status');
+            //$table->unsignedTinyInteger('fk_lead_status');
             $table->boolean('active')->default(true);
             $table->string('status', 70)->nullable();
             $table->timestamps();
@@ -28,7 +28,7 @@ return new class extends Migration
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('fk_client_lead')->references('id_client_lead')->on('clients_leads');
-            $table->foreign('fk_lead_status')->references('id_lead_status')->on('leads_status');
+            //$table->foreign('fk_lead_status')->references('id_lead_status')->on('leads_status');
 
             $table->charset = 'utf8';
             $table->collation = 'utf8_general_ci';

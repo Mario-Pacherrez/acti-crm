@@ -7,4 +7,4 @@ window.Alpine = Alpine;
 Alpine.start();
 
 require('alpinejs');
-require('./init-alpine');
+//require('./init-alpine');

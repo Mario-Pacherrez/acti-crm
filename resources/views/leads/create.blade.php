@@ -7,10 +7,39 @@
 
     <div>
         <div class="max-w-4xl mx-auto py-10 sm:px-10 md:px-20 lg:px-20">
+            <div class="block mb-8">
+                <a href="{{ route('leads.index') }}" class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">Volver a la lista</a>
+            </div>
+
             <div class="mt-5 md:mt-0 md:col-span-2">
                 <form method="post" action="{{ route('leads.store') }}">
                     @csrf
                     <div class="shadow overflow-hidden sm:rounded-md">
+
+                        <div class="px-4 py-5 bg-white sm:p-6">
+                            <label for="channels" class="block font-medium text-sm text-gray-700">Medios</label>
+                            <select name="channels" id="channels" class="form-select block rounded-md shadow-sm mt-1 block w-full">
+                                @foreach($channels as $id => $channel)
+                                    <option value="{{ $id }}" {{ in_array($id, old('channels', [])) ? ' selected' : '' }}>{{ $channel }}</option>
+                                @endforeach
+                            </select>
+                            @error('channels')
+                                <p class="text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div class="px-4 py-5 bg-white sm:p-6">
+                            <label for="users" class="block font-medium text-sm text-gray-700">Asesor</label>
+                            <select name="users" id="users" class="form-select block rounded-md shadow-sm mt-1 block w-full">
+                                @foreach($users as $user)
+                                    <option value="{{ $user->id }}">{{ $user->name." ".$user->lastname }}</option>
+                                @endforeach
+                            </select>
+                            @error('users')
+                                <p class="text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                        </div>
+
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="names" class="block font-medium text-sm text-gray-700">Nombres y Apellidos</label>
                             <input type="text" name="names" id="names" class="form-input rounded-md shadow-sm mt-1 block w-full" value="{{ old('names', '') }}" />

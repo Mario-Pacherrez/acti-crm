@@ -20,6 +20,10 @@ use App\Http\Controllers\Web\Lead\ClientLeadController;
 /* Package: User */
 use App\Http\Controllers\Web\User\UserController;
 
+//Route::post('');
+
+//Route::post('logout', [\Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
 Route::get('/', function () {
     //return view('welcome');
     return redirect(route('login'));

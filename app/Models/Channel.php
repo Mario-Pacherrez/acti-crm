@@ -17,10 +17,10 @@ class Channel extends Model
     protected $fillable = [
         'channel_name',
         'active',
+        'created_by',
     ];
 
     protected $hidden = [
-        'created_by',
         'updated_by',
         'deleted_by',
     ];
