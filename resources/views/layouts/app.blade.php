@@ -16,7 +16,7 @@
 
         <link rel="stylesheet" href="{{ asset("css/tailwind.output.css") }}">
 
-        {{--<link rel="stylesheet" href="{{ asset("css/acti.css") }}">--}}
+        <link rel="stylesheet" href="{{ asset("css/acti.css") }}">
 
         @livewireStyles
 
@@ -37,8 +37,7 @@
             @include('frontend.includes.sidebar')
 
             <!-- Mobile sidebar -->
-            <!-- Backdrop -->
-            {{--@include('frontend.includes.mobile-sidebar')--}}
+            @include('frontend.includes.mobile-sidebar')
 
 
             <!-- Header -->
@@ -47,7 +46,7 @@
                 {{--@include('frontend.includes.header')--}}
 
                 <!-- Page Content -->
-                <main class="h-full overflow-y-auto">
+                <main class="h-full pb-16 overflow-y-auto">
                     {{ $slot }}
                 </main>
             </div>

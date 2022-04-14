@@ -2,11 +2,22 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Web\User\UserController;
+use App\Http\Controllers\Web\Admin\HomeController;
+use App\Http\Controllers\Web\Admin\User\UserController;
+use App\Http\Controllers\Web\Lead\ClientLeadController;
 
-//Route::resource('users', UserController::class)->names('admin.users');
+/*Route::get('/', function () {
+    return redirect(route('login'));
+});*/
 
 Route::group(['middleware' => 'auth'], function () {
-    //Route::resource('leads', ClientLeadController::class);
-    Route::resource('users', UserController::class);
+    Route::get('/', [HomeController::class, 'index'])->name('admin.home');
+    Route::resource('users', UserController::class)->names('admin.users');
+    Route::resource('leads', ClientLeadController::class)->names('admin.leads');
+
+    //Route::resource('leads', ClientLeadController::class)->names('admin.leads');
+    /*Route::get('', [HomeController::class, 'index'])->name('admin.home');
+    Route::resource('users', UserController::class)->names('admin.users');
+    Route::resource('leads', ClientLeadController::class)->names('admin.leads');*/
+
 });

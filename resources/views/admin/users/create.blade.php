@@ -8,10 +8,10 @@
     <div>
         <div class="max-w-4xl mx-auto py-10 sm:px-10 md:px-20 lg:px-20">
             <div class="block mb-8">
-                <a href="{{ route('users.index') }}" class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">Volver a la lista</a>
+                <a href="{{ route('admin.users.index') }}" class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">Volver a la lista</a>
             </div>
             <div class="mt-5 md:mt-0 md:col-span-2">
-                <form method="post" action="{{ route('users.store') }}">
+                <form method="post" action="{{ route('admin.users.store') }}">
                     @csrf
                     <div class="shadow overflow-hidden sm:rounded-md">
                         {{-- Tipo de Usuario --}}

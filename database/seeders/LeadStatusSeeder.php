@@ -19,6 +19,12 @@ class LeadStatusSeeder extends Seeder
     {
         DB::table('leads_status')->insert([
             [
+                'status_name' => 'PENDIENTE',
+                'active'      => true,
+                'created_at'  => Carbon::now(),
+                'created_by'  => null
+            ],
+            [
                 'status_name' => 'NO CONTESTA',
                 'active'       => true,
                 'created_at'   => Carbon::now(),
@@ -56,12 +62,6 @@ class LeadStatusSeeder extends Seeder
             ],
             [
                 'status_name' => 'VOLVER A LLAMAR',
-                'active'      => true,
-                'created_at'  => Carbon::now(),
-                'created_by'  => null
-            ],
-            [
-                'status_name' => 'PENDIENTE',
                 'active'      => true,
                 'created_at'  => Carbon::now(),
                 'created_by'  => null

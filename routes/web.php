@@ -15,16 +15,21 @@ use Illuminate\Support\Facades\Artisan;
 */
 
 /* Package: Client Lead */
-use App\Http\Controllers\Web\Lead\ClientLeadController;
+use App\Http\Controllers\Web\General\Lead\MyLeadsController;
+use App\Http\Controllers\Web\General\Lead\LeadsController;
+use App\Http\Controllers\Web\General\Sales\SalesController;
 
 /* Package: User */
-use App\Http\Controllers\Web\User\UserController;
+//use App\Http\Controllers\Web\User\UserController;
 
-//Route::post('');
-
-//Route::post('logout', [\Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::class, 'destroy'])->name('logout');
+//use App\Http\Controllers\Web\General\UserHomeController;
 
 Route::get('/', function () {
+    //return view('welcome');
+    return redirect(route('login'));
+});
+
+Route::get('/logout', function () {
     //return view('welcome');
     return redirect(route('login'));
 });
@@ -32,6 +37,10 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+/*Route::middleware(['auth:sanctum', 'verified'])->get('/home', function () {
+    return view('general.user-home');
+})->name('user.home');*/
 
 // Ruta para ejecutar comandos artisan desde la web
 /*
@@ -46,12 +55,15 @@ Route::get('/run-migrations', function () {
 });*/
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('leads', ClientLeadController::class);
-    Route::resource('users', UserController::class);
+    Route::resource('leads', LeadsController::class)->names('leads');
+    Route::resource('sales', SalesController::class)->names('sales');
+    //Route::get('sales', LeadsController::class)->name('sales.index');
+
+    //Route::resource('leads', ClientLeadController::class);
+    //Route::resource('leads', ClientLeadController::class);
 });
 
 /*
- *
  * Route::get('/run-migrations', function () {
     return Artisan::call('migrate', ["--force" => true ]);
 });

@@ -1,14 +1,14 @@
 <x-app-layout>
-    <x-slot name="header">
+    {{--<x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Mostrar Usuario') }}
         </h2>
-    </x-slot>
+    </x-slot>--}}
 
     <div>
         <div class="max-w-6xl mx-auto py-10 sm:px-6 w-2/3">
             <div class="block mb-8">
-                <a href="{{ route('users.index') }}" class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">Volver a la lista</a>
+                <a href="{{ route('admin.users.index') }}" class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">Volver a la lista</a>
             </div>
 
             <div class="flex flex-col">
@@ -19,10 +19,12 @@
                             <table class="min-w-full divide-y divide-gray-200 w-full">
                                 <tr class="border-b">
                                     <th scope="col" class="w-1/4 px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        ID
+                                        Rol
                                     </th>
                                     <td class="w-3/4 px-6 py-4 whitespace-nowrap text-sm text-gray-900 bg-white divide-y divide-gray-200">
-                                        {{ $user->id }}
+                                        @foreach ($roles as $role)
+                                            {{ $role }}
+                                        @endforeach
                                     </td>
                                 </tr>
                                 <tr class="border-b">
@@ -74,7 +76,7 @@
             </div>
 
             <div class="block mt-8">
-                <a href="{{ route('users.index') }}" class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">Volver a la lista</a>
+                <a href="{{ route('admin.users.index') }}" class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">Volver a la lista</a>
             </div>
         </div>
     </div>

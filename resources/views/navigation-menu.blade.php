@@ -17,9 +17,9 @@
 
         <!-- Search input -->
         <div class="flex justify-center flex-1 lg:mr-32">
-            <div class="relative w-full max-w-xl mr-6 focus-within:text-purple-500">
+            <div class="relative w-full max-w-md mr-6 focus-within:text-purple-500">
                 <div class="absolute inset-y-0 flex items-center pl-2">
-                    <svg class="w-4 h-4"
+                    {{--<svg class="w-4 h-4"
                          aria-hidden="true"
                          fill="currentColor"
                          viewBox="0 0 20 20">
@@ -27,13 +27,13 @@
                             fill-rule="evenodd"
                             d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
                             clip-rule="evenodd"></path>
-                    </svg>
+                    </svg>--}}
                 </div>
-                <input
+                {{--<input
                     class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-white border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input"
                     type="text"
                     placeholder="Buscar"
-                    aria-label="Search"/>
+                    aria-label="Search"/>--}}
             </div>
         </div>
 
@@ -74,7 +74,7 @@
                         @else
                             <span class="inline-flex rounded-md">
                                 <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-800 focus:outline-none transition-colors duration-150 dark:text-gray-400 dark:hover:text-gray-200 dark:bg-gray-700">
-                                        {{ Auth::user()->name }}
+                                        {{ Auth::user()->name." ".Auth::user()->lastname }}
                                     <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                                     </svg>
@@ -112,7 +112,6 @@
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}" x-data>
                             @csrf
-                            @method('POST')
 
                             <x-jet-dropdown-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
                                 <svg class="w-5 h-5 mr-3"

@@ -25,5 +25,14 @@ class UserSeeder extends Seeder
             'email'      => 'mariopacherrez@gmail.com',
             'password'   => Hash::make('admin'),
         ])->assignRole('Administrador');
+
+        User::create([
+            'user_type' => 'system',
+            'nickname'  => '',
+            'name'      => 'Por',
+            'lastname'  => 'Asignar',
+            'email'     => 'system1@gmail.com',
+            'password'  => '',
+        ])->assignRole('Vendedor');
     }
 }

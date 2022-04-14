@@ -51,7 +51,6 @@ class UserController extends Controller
             $user->password = Hash::make($request->password);
             $user->save();
             $user->roles()->sync($request->input('roles', []));
-
         //}
 
         //$user = User::create($request->validated());
@@ -74,7 +73,6 @@ class UserController extends Controller
     {
         //UpdateUserRequest
         // $user->update($request->validated());
-        //$r = $request->validated();
         $user->roles()->sync($request->roles);
         return redirect()->route('users.index', $user);
     }

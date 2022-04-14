@@ -11,7 +11,7 @@ class ChannelClientLeadPivot extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $table = 'channel_x_client_lead';
+    /*protected $table = 'channel_x_client_lead';
     protected $primaryKey = 'id_channel_x_client_lead';
 
     protected $hidden = [
@@ -19,5 +19,5 @@ class ChannelClientLeadPivot extends Model
         'created_by',
         'updated_by',
         'deleted_by',
-    ];
+    ];*/
 }

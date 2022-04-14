@@ -12,6 +12,9 @@ use App\Models\Channel;
 use App\Models\ClientLead;
 use App\Models\LeadStatus;
 use Spatie\Permission\Models\Role;
+use App\Models\UserClientLeadPivot;
+
+use Carbon\Carbon;
 
 class ClientLeadController extends Controller
 {
@@ -19,9 +22,10 @@ class ClientLeadController extends Controller
     {
         $leads = ClientLead::all();
         $leads->each(function ($leads) {
-            $leads->channels;
+            $leads->channel;
+            $leads->users;
         });
-        return view('leads.index', compact('leads'))->with('leads', $leads);
+        return view('admin.leads.index', compact('leads'))->with('leads', $leads);
     }
 
     public function create()
@@ -30,7 +34,7 @@ class ClientLeadController extends Controller
         $channels = Channel::orderBy('channel_name', 'ASC')->pluck('channel_name', 'id_channel');
         $leads_status = LeadStatus::orderBy('status_name', 'ASC')->pluck('status_name', 'id_lead_status');
 
-        return view('leads.create')->with('users', $users)->with('channels', $channels)->with('leads_status', $leads_status);
+        return view('admin.leads.create')->with('users', $users)->with('channels', $channels)->with('leads_status', $leads_status);
     }
 
     //StoreClientLeadRequest
@@ -45,6 +49,7 @@ class ClientLeadController extends Controller
         $lead = new ClientLead($request->all());
         //dd($request);
         $lead->fk_lead_status = 1;
+        $lead->fk_channel = $request->channels;
         //$lead->users()->sync($request->user->id);
         $lead->names = $request->names;
         $lead->email = $request->email;
@@ -53,33 +58,43 @@ class ClientLeadController extends Controller
 
         $lead->save();
 
-        $lead->channels()->sync($request->input('channels'));
-        $lead->users()->sync($lead->id_client_lead);
+        //$lead->channel()->sync($request->input('channels'));
 
-        //fk_lead_status , names, email, phone , courses_name
-
-        return redirect()->route('leads.index');
+        $x = new UserClientLeadPivot();
+        $x->created_at = Carbon::now();
+        $lead->users()->sync($request->input('users'));
+        //$lead->users()->syncWithPivotValues([$request->input('users')], ['created_at' => now()]);
+        return redirect()->route('admin.leads.index');
     }
 
     public function show(ClientLead $lead)
     {
-        return view('leads.show', compact('lead'));
+        return view('admin.leads.show', compact('lead'));
     }
 
     public function edit(ClientLead $lead)
     {
-        return view('leads.edit', compact('lead'));
+        $sellers = User::role('Vendedor')->get();
+        $channels = Channel::all();
+        //$channels = Channel::all()->pluck('channel_name', 'id_channel');
+        $lead->users();
+        $lead->channel();
+        return view('admin.leads.edit', compact('lead'))->with('lead', $lead)->with('sellers', $sellers)->with('channels', $channels);
     }
 
     public function update(UpdateClientLeadRequest $request, ClientLead $lead)
     {
+        $lead->fk_channel = $request->input('channels');
         $lead->update($request->validated());
-        return redirect()->route('leads.index');
+        //$lead->users()->sync($request->input('sellers'));
+        $lead->users()->syncWithPivotValues($request->input('sellers'), ['updated_at' => now()]);
+
+        return redirect()->route('admin.leads.index');
     }
 
     public function destroy(ClientLead $lead)
     {
         $lead->delete();
-        return redirect()->route('leads.index');
+        return redirect()->route('admin.leads.index');
     }
 }

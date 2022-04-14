@@ -24,6 +24,8 @@ class UpdateClientLeadRequest extends FormRequest
     public function rules()
     {
         return [
+            'sellers' => 'required',
+            'channels' => 'required',
             'names' => 'required|string|max:150',
             'email' => 'required|string|max:150',
             'phone' => 'required|string|max:100',
