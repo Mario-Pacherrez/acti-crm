@@ -86,8 +86,8 @@ class ClientLeadController extends Controller
     {
         $lead->fk_channel = $request->input('channels');
         $lead->update($request->validated());
-        //$lead->users()->sync($request->input('sellers'));
-        $lead->users()->syncWithPivotValues($request->input('sellers'), ['updated_at' => now()]);
+        $lead->users()->sync($request->input('sellers'));
+        //$lead->users()->syncWithPivotValues($request->input('sellers'), ['updated_at' => now()]);
 
         return redirect()->route('admin.leads.index');
     }
