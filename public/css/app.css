@@ -1245,11 +1245,11 @@ select {
 .max-w-6xl {
   max-width: 72rem;
 }
-.max-w-md {
-  max-width: 28rem;
-}
 .max-w-4xl {
   max-width: 56rem;
+}
+.max-w-md {
+  max-width: 28rem;
 }
 .flex-1 {
   flex: 1 1 0%;
@@ -1536,6 +1536,10 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
+.bg-orange-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 237 213 / var(--tw-bg-opacity));
+}
 .bg-green-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(34 197 94 / var(--tw-bg-opacity));
@@ -1636,6 +1640,14 @@ select {
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
 }
+.px-0\.5 {
+  padding-left: 0.125rem;
+  padding-right: 0.125rem;
+}
+.px-0 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
 .pt-6 {
   padding-top: 1.5rem;
 }
@@ -1680,6 +1692,12 @@ select {
 }
 .pr-2 {
   padding-right: 0.5rem;
+}
+.pl-6 {
+  padding-left: 1.5rem;
+}
+.pr-6 {
+  padding-right: 1.5rem;
 }
 .pb-16 {
   padding-bottom: 4rem;
@@ -1841,6 +1859,14 @@ select {
 .text-gray-300 {
   --tw-text-opacity: 1;
   color: rgb(209 213 219 / var(--tw-text-opacity));
+}
+.text-orange-700 {
+  --tw-text-opacity: 1;
+  color: rgb(194 65 12 / var(--tw-text-opacity));
+}
+.text-amber-600 {
+  --tw-text-opacity: 1;
+  color: rgb(217 119 6 / var(--tw-text-opacity));
 }
 .text-amber-500 {
   --tw-text-opacity: 1;
@@ -2587,6 +2613,11 @@ img,video{max-width:100%;height:auto}
     background-color: rgb(55 65 81 / var(--tw-bg-opacity));
   }
 
+  .dark\:bg-orange-600 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(234 88 12 / var(--tw-bg-opacity));
+  }
+
   .dark\:text-gray-200 {
     --tw-text-opacity: 1;
     color: rgb(229 231 235 / var(--tw-text-opacity));
@@ -2607,6 +2638,11 @@ img,video{max-width:100%;height:auto}
     color: rgb(216 180 254 / var(--tw-text-opacity));
   }
 
+  .dark\:text-white {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+  }
+
   .dark\:text-gray-300 {
     --tw-text-opacity: 1;
     color: rgb(209 213 219 / var(--tw-text-opacity));
@@ -2615,11 +2651,6 @@ img,video{max-width:100%;height:auto}
   .dark\:text-gray-500 {
     --tw-text-opacity: 1;
     color: rgb(107 114 128 / var(--tw-text-opacity));
-  }
-
-  .dark\:text-white {
-    --tw-text-opacity: 1;
-    color: rgb(255 255 255 / var(--tw-text-opacity));
   }
 
   .dark\:placeholder-gray-500::-moz-placeholder {
@@ -2851,6 +2882,11 @@ img,video{max-width:100%;height:auto}
   .sm\:px-10 {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
+  }
+
+  .sm\:px-5 {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 
   .sm\:pt-0 {

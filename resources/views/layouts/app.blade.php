@@ -55,5 +55,16 @@
         @stack('modals')
 
         @livewireScripts
+
+        {{--<script type="text/javascript">
+            $(document).ready(function () {
+                $('.openModal').on('click', function(e){
+                    $('#interestModal').removeClass('invisible');
+                });
+                $('.closeModal').on('click', function(e){
+                    $('#interestModal').addClass('invisible');
+                });
+            });
+        </script>--}}
     </body>
 </html>

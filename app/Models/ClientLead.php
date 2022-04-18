@@ -40,7 +40,7 @@ class ClientLead extends Model
 
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'user_x_client_lead', 'fk_client_lead', 'user_id');
+        return $this->belongsToMany(User::class, 'user_x_client_lead', 'fk_client_lead', 'user_id')->withTimestamps();
     }
 
     public function leadStatus(): BelongsTo

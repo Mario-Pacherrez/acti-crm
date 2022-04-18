@@ -21,7 +21,7 @@
                     <div class="shadow overflow-hidden sm:rounded-md">
 
                         <div class="px-4 py-3 bg-white sm:p-6">
-                            <label for="names" class="block font-medium text-sm text-gray-700">Nombres y Apellidos</label>
+                            <label for="names" class="block font-medium text-sm text-gray-700">Nombres y Apellidos del Leads</label>
                             <input type="text" name="names" id="names" class="form-input rounded-md shadow-sm mt-1 block w-full" value="{{ old('names', $lead->names) }}" />
                             @error('names')
                             <p class="text-sm text-red-600">{{ $message }}</p>

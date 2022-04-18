@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Artisan;
 */
 
 /* Package: Client Lead */
-use App\Http\Controllers\Web\General\Lead\MyLeadsController;
 use App\Http\Controllers\Web\General\Lead\LeadsController;
-use App\Http\Controllers\Web\General\Sales\SalesController;
+use App\Http\Controllers\Web\General\Lead\MyLeadsController;
+//use App\Http\Controllers\Web\General\Sales\SalesController;
 
 /* Package: User */
 //use App\Http\Controllers\Web\User\UserController;
@@ -56,11 +56,10 @@ Route::get('/run-migrations', function () {
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('leads', LeadsController::class)->names('leads');
-    Route::resource('sales', SalesController::class)->names('sales');
-    //Route::get('sales', LeadsController::class)->name('sales.index');
+    Route::resource('myleads', MyLeadsController::class)->names('myleads');
+    Route::post('details', [MyLeadsController::class, 'details']);
+    //Route::resource('sales', SalesController::class)->names('sales');
 
-    //Route::resource('leads', ClientLeadController::class);
-    //Route::resource('leads', ClientLeadController::class);
 });
 
 /*

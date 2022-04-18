@@ -45,7 +45,7 @@
                                 </tr>--}}
                                 <tr class="border-b">
                                     <th class="pl-3 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Nombres y Apellidos
+                                        Nombres y Apellidos del Leads
                                     </th>
                                     <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-900 bg-white divide-y divide-gray-200">
                                         {{ $lead->names }}
@@ -83,13 +83,27 @@
                                         {{ $lead->channel->channel_name }}
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr class="border-b">
                                     <th class="pl-3 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Asesor
                                     </th>
                                     <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-900 bg-white divide-y divide-gray-200">
                                         @foreach ($lead->users as $user)
                                             {{ $user->name." ".$user->lastname }}
+                                        @endforeach
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="pl-3 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Fecha y Hora de Asignación
+                                    </th>
+                                    <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-900 bg-white divide-y divide-gray-200">
+                                        @foreach ($lead->users as $user)
+                                            @if($user->id == '2')
+                                                {{ "Sin Asignar" }}
+                                            @else
+                                                {{ $user->pivot->updated_at->format('d/m/Y')." - ".$user->pivot->updated_at->format('H:i') }}
+                                            @endif
                                         @endforeach
                                     </td>
                                 </tr>

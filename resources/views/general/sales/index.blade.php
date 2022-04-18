@@ -22,8 +22,11 @@
                         <th class="px-1 py-3 border-r text-center">
                             N°
                         </th>
-                        <th class="px-4 py-3">
+                        <th class="px-1 py-3">
                             Estado
+                        </th>
+                        <th class="px-1 py-3">
+                            Medio
                         </th>
                         <th class="px-4 py-3">
                             Fecha Registro
@@ -37,16 +40,16 @@
                         {{--<th class="px-4 py-3">
                             Teléfono
                         </th>--}}
-                        <th class="px-4 py-3">
+                        <th class="px-4 py-3 border-r">
                             Curso(s)
                         </th>
                         {{--<th class="px-4 py-3">
                             Medio
                         </th>--}}
-                        <th class="px-4 py-3">
+                        <th class="px-1 py-3 border-r text-center">
                             Asesor
                         </th>
-                        <th class="px-4 py-3">
+                        <th class="px-1 py-3 text-center">
                             Acción
                         </th>
                     </tr>
@@ -57,8 +60,12 @@
                         <tr class="text-gray-700 dark:text-gray-400 hover:bg-gray-200">
                             <td class="pl-2 py-3 text-sm border-r text-center"></td>
 
-                            <td class="px-1 py-3 text-sm border-r text-center">
+                            <td class="px-1 py-3 text-sm">
                                 {{ $lead->leadStatus->status_name }}
+                            </td>
+
+                            <td class="px-1 py-3 text-sm">
+                                {{ $lead->channel->channel_name }}
                             </td>
 
                             <td class="px-4 py-3 text-sm">{{ $lead->created_at->format('d-m-Y') }}</td>
@@ -73,17 +80,17 @@
 
                             {{--<td class="px-4 py-3 text-sm">{{ $lead->phone }}</td>--}}
 
-                            <td class="px-4 py-3 text-sm">{{ $lead->courses_name }}</td>
+                            <td class="px-4 py-3 text-sm border-r ">{{ $lead->courses_name }}</td>
 
                             {{--<td class="px-4 py-3 text-sm">{{ $lead->channel->channel_name }}</td>--}}
 
                             @foreach ($lead->users as $user)
-                                <td class="px-4 py-3 text-sm">{{ $user->name." ".$user->lastname }}</td>
+                                <td class="px-1 py-3 text-sm border-r">{{ $user->name." ".$user->lastname }}</td>
                             @endforeach
 
-                            <td class="px-4 py-3">
-                                <div class="flex items-center space-x-4 text-sm">
-                                    <a href="{{ route('admin.leads.show', $lead->id_client_lead) }}" class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" aria-label="Ver" title="Ver">
+                            <td class="px-1 py-3">
+                                <div class="flex items-center space-x-4 text-sm justify-center">
+                                    <a href="{{ route('sales.show', $lead->id_client_lead) }}" class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" aria-label="Ver" title="Ver">
                                         <svg class="w-5 h-5"
                                              aria-hidden="true"
                                              fill="none"
@@ -94,7 +101,7 @@
                                         </svg>
                                     </a>
 
-                                    <a href="{{ route('admin.leads.edit', $lead->id_client_lead) }}" class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" aria-label="Editar" title="Editar">
+                                    <a href="{{ route('sales.edit', $lead->id_client_lead) }}" class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" aria-label="Editar" title="Editar">
                                         <svg class="w-5 h-5"
                                              aria-hidden="true"
                                              fill="none"
@@ -105,7 +112,7 @@
                                         </svg>
                                     </a>
 
-                                    <form class="inline-block" action="{{ route('admin.leads.destroy', $lead->id_client_lead) }}" method="POST" onsubmit="return confirm('¿Está seguro que quiere eliminarlo?');">
+                                    {{--<form class="inline-block" action="{{ route('sales.destroy', $lead->id_client_lead) }}" method="POST" onsubmit="return confirm('¿Está seguro que quiere eliminarlo?');">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-red-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" aria-label="Eliminar" title="Eliminar">
@@ -118,7 +125,7 @@
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
                                             </svg>
                                         </button>
-                                    </form>
+                                    </form>--}}
 
                                 </div>
                             </td>

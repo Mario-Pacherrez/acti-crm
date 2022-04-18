@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web\Lead;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreClientLeadRequest;
 use App\Http\Requests\UpdateClientLeadRequest;
 
@@ -11,8 +12,8 @@ use App\Models\User;
 use App\Models\Channel;
 use App\Models\ClientLead;
 use App\Models\LeadStatus;
-use Spatie\Permission\Models\Role;
 use App\Models\UserClientLeadPivot;
+use Spatie\Permission\Models\Role;
 
 use Carbon\Carbon;
 
@@ -20,6 +21,7 @@ class ClientLeadController extends Controller
 {
     public function index()
     {
+        // $leads = ClientLead::paginate(2);
         $leads = ClientLead::all();
         $leads->each(function ($leads) {
             $leads->channel;
@@ -55,13 +57,14 @@ class ClientLeadController extends Controller
         $lead->email = $request->email;
         $lead->phone = $request->phone;
         $lead->courses_name = $request->courses_name;
+        $lead->created_by = Auth::id();
 
         $lead->save();
 
         //$lead->channel()->sync($request->input('channels'));
 
-        $x = new UserClientLeadPivot();
-        $x->created_at = Carbon::now();
+        //$x = new UserClientLeadPivot();
+        //$x->created_at = Carbon::now();
         $lead->users()->sync($request->input('users'));
         //$lead->users()->syncWithPivotValues([$request->input('users')], ['created_at' => now()]);
         return redirect()->route('admin.leads.index');
@@ -85,6 +88,7 @@ class ClientLeadController extends Controller
     public function update(UpdateClientLeadRequest $request, ClientLead $lead)
     {
         $lead->fk_channel = $request->input('channels');
+        $lead->updated_by = Auth::id();
         $lead->update($request->validated());
         $lead->users()->sync($request->input('sellers'));
         //$lead->users()->syncWithPivotValues($request->input('sellers'), ['updated_at' => now()]);

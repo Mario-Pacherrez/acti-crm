@@ -40,7 +40,7 @@
                             {{--<th class="px-4 py-3">
                                 Medio
                             </th>--}}
-                            <th class="px-3 py-3 border-r text-center">
+                            <th class="px-1 py-3 border-r text-center">
                                 Asesor
                             </th>
                             <th class="px-1 py-3 text-center">
@@ -54,7 +54,7 @@
                         <tr class="text-gray-700 dark:text-gray-400 hover:bg-gray-200">
                             <td class="px-1 py-3 text-sm border-r text-center"></td>
 
-                            <td class="px-4 py-3 text-sm">{{ $lead->created_at->format('d-m-Y') }}</td>
+                            <td class="px-4 py-3 text-sm">{{ $lead->created_at->format('d/m/Y') }}</td>
 
                             <td class="px-4 py-3 text-sm">
                                 <span class="px-2 py-1 font-semibold leading-tight text-gray-700 dark:text-gray-400">
@@ -72,9 +72,9 @@
 
                             @foreach ($lead->users as $user)
                                 @if($user->id == '2')
-                                    <td class="px-3 py-3 text-sm text-amber-500 font-semibold border-r">{{ $user->name." ".$user->lastname }}</td>
+                                    <td class="px-1 py-3 text-sm text-amber-500 font-semibold border-r">{{ $user->name." ".$user->lastname }}</td>
                                 @else
-                                    <td class="px-3 py-3 text-sm text-emerald-500 font-semibold border-r">{{ $user->name." ".$user->lastname }}</td>
+                                    <td class="px-1 py-3 text-sm text-emerald-500 font-semibold border-r">{{ $user->name." ".$user->lastname }}</td>
                                 @endif
                             @endforeach
 
@@ -120,6 +120,9 @@
                     @endforeach
                     </tbody>
                 </table>
+                {{--<div class="text-center">
+                    {!! $leads->render() !!}
+                </div>--}}
             </div>
 
             <div class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">

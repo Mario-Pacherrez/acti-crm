@@ -58,6 +58,11 @@ class RolePermissionSeeder extends Seeder
         ])->syncRoles([$role_admin]);
 
         Permission::create([
+            'path' => 'admin.users.show',
+            'name' => 'admin.users.show'
+        ])->syncRoles([$role_admin]);
+
+        Permission::create([
             'path' => 'admin.users.edit',
             'name' => 'admin.users.edit'
         ])->syncRoles([$role_admin]);
@@ -72,11 +77,76 @@ class RolePermissionSeeder extends Seeder
             'name' => 'admin.users.destroy'
         ])->syncRoles([$role_admin]);
 
+        // ADMIN - LEADS
+        Permission::create([
+            'path' => 'admin.leads.index',
+            'name' => 'admin.leads.index'
+        ])->syncRoles([$role_admin, $role_marketing]);
+
+        Permission::create([
+            'path' => 'admin.leads.create',
+            'name' => 'admin.leads.create'
+        ])->syncRoles([$role_admin, $role_marketing]);
+
+        Permission::create([
+            'path' => 'admin.leads.show',
+            'name' => 'admin.leads.show'
+        ])->syncRoles([$role_admin, $role_marketing]);
+
+        Permission::create([
+            'path' => 'admin.leads.edit',
+            'name' => 'admin.leads.edit'
+        ])->syncRoles([$role_admin, $role_marketing]);
+
+        Permission::create([
+            'path' => 'admin.leads.update',
+            'name' => 'admin.leads.update'
+        ])->syncRoles([$role_admin, $role_marketing]);
+
+        Permission::create([
+            'path' => 'admin.leads.destroy',
+            'name' => 'admin.leads.destroy'
+        ])->syncRoles([$role_admin, $role_marketing]);
+
+
+        // ADMIN - SALES
+        Permission::create([
+            'path' => 'admin.sales.index',
+            'name' => 'admin.sales.index'
+        ])->syncRoles([$role_admin, $role_marketing]);
+
+        Permission::create([
+            'path' => 'admin.sales.create',
+            'name' => 'admin.sales.create'
+        ])->syncRoles([$role_admin, $role_marketing]);
+
+        Permission::create([
+            'path' => 'admin.sales.show',
+            'name' => 'admin.sales.show'
+        ])->syncRoles([$role_admin, $role_marketing]);
+
+        Permission::create([
+            'path' => 'admin.sales.edit',
+            'name' => 'admin.sales.edit'
+        ])->syncRoles([$role_admin, $role_marketing]);
+
+        Permission::create([
+            'path' => 'admin.sales.update',
+            'name' => 'admin.sales.update'
+        ])->syncRoles([$role_admin, $role_marketing]);
+
+        Permission::create([
+            'path' => 'admin.sales.destroy',
+            'name' => 'admin.sales.destroy'
+        ])->syncRoles([$role_admin, $role_marketing]);
+
+
+
         // SELLER, MARKETING
         Permission::create([
             'path' => 'user.home',
             'name' => 'user.home'
-        ])->syncRoles([$role_marketing, $role_seller]);
+        ])->syncRoles([$role_admin, $role_marketing, $role_seller]); //
 
         Permission::create([
             'path' => 'leads.index',
@@ -86,6 +156,11 @@ class RolePermissionSeeder extends Seeder
         Permission::create([
             'path' => 'leads.create',
             'name' => 'leads.create'
+        ])->syncRoles([$role_admin, $role_marketing, $role_seller]);
+
+        Permission::create([
+            'path' => 'leads.show',
+            'name' => 'leads.show'
         ])->syncRoles([$role_admin, $role_marketing, $role_seller]);
 
         Permission::create([
@@ -101,6 +176,38 @@ class RolePermissionSeeder extends Seeder
         Permission::create([
             'path' => 'leads.destroy',
             'name' => 'leads.destroy'
+        ])->syncRoles([$role_admin, $role_marketing, $role_seller]);
+
+
+        // MY LEADS
+        Permission::create([
+            'path' => 'myleads.index',
+            'name' => 'myleads.index'
+        ])->syncRoles([$role_admin, $role_marketing, $role_seller]);
+
+        Permission::create([
+            'path' => 'myleads.create',
+            'name' => 'myleads.create'
+        ])->syncRoles([$role_admin, $role_marketing, $role_seller]);
+
+        Permission::create([
+            'path' => 'myleads.show',
+            'name' => 'myleads.show'
+        ])->syncRoles([$role_admin, $role_marketing, $role_seller]);
+
+        Permission::create([
+            'path' => 'myleads.edit',
+            'name' => 'myleads.edit'
+        ])->syncRoles([$role_admin, $role_marketing, $role_seller]);
+
+        Permission::create([
+            'path' => 'myleads.update',
+            'name' => 'myleads.update'
+        ])->syncRoles([$role_admin, $role_marketing, $role_seller]);
+
+        Permission::create([
+            'path' => 'myleads.destroy',
+            'name' => 'myleads.destroy'
         ])->syncRoles([$role_admin, $role_marketing, $role_seller]);
 
         /*
