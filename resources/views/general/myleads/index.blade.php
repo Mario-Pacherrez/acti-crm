@@ -58,7 +58,7 @@
                     <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                     @foreach ($leads as $lead)
                         <tr class="text-gray-700 dark:text-gray-400 hover:bg-gray-200">
-                            <td class="pl-2 py-3 text-sm border-r text-center"></td>
+                            <td class="pl-2 py-3 text-sm border-r text-center">{{ ($leads->currentPage() - 1) * $leads->perPage() + $loop->iteration }}</td>
 
                             <td class="px-0.5 py-3 text-sm text-center">{{ $lead->created_at->format('d/m/Y') }}</td>
 
@@ -148,65 +148,15 @@
 
             <div class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
                 <span class="flex items-center col-span-3"></span>
+                <span class="col-span-2"></span>
+
+                <!-- Pagination -->
+                <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
+                    <nav aria-label="Table navigation">
+                        {{ $leads->links() }}
+                    </nav>
+                </span>
             </div>
         </div>
     </div>
-
-    {{--<div id="ModalDetails">
-        <div class="modal-flex-container">
-            <div class="modal-bg-container">
-            </div>
-            <div class="modal-space-container">
-
-            </div>
-            <div class="modal-container">
-                <div class="modal-wrapper">
-                    <div class="modal-wrapper-flex">
-                        <div class="modal-icon"></div>
-                        <div class="modal-content">
-                            <h3>Detalles</h3>
-
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
-    </div>--}}
-
-    {{--<form action="#" method="post" enctype="multipart/form-data">
-        {{ csrf_field() }}
-        <div class="modal fade text-left" id="ModalDetails" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">{{ __('Agregar Detalle') }}</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <label for="title" class="block font-medium text-sm text-gray-700">Título:</label>
-                                <input type="text" name="title" id="title" class="form-input rounded-md shadow-sm mt-1 block w-full" value="{{ old('title', '') }}" required/>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <label for="title" class="block font-medium text-sm text-gray-700">Descripción:</label>
-                                <input type="text" name="description" id="description" class="form-input rounded-md shadow-sm mt-1 block w-full" value="{{ old('description', '') }}" required/>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">{{ __('Atrás') }}</button>
-                            <button type="submit" class="btn btn-success">{{ __('Guardar') }}</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>--}}
-
 </x-app-layout>

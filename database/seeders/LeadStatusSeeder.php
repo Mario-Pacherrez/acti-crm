@@ -19,49 +19,49 @@ class LeadStatusSeeder extends Seeder
     {
         DB::table('leads_status')->insert([
             [
-                'status_name' => 'PENDIENTE',
+                'status_name' => 'Pendiente',
                 'active'      => true,
                 'created_at'  => Carbon::now(),
                 'created_by'  => null
             ],
             [
-                'status_name' => 'NO CONTESTA',
+                'status_name' => 'No Contesta',
                 'active'       => true,
                 'created_at'   => Carbon::now(),
                 'created_by'   => null
             ],
             [
-                'status_name' => 'CONFIRMARA',
+                'status_name' => 'Confirmara',
                 'active'      => true,
                 'created_at'  => Carbon::now(),
                 'created_by'  => null
             ],
             [
-                'status_name' => 'NO INTERESADO/A',
+                'status_name' => 'No Interesado/a',
                 'active'      => true,
                 'created_at'  => Carbon::now(),
                 'created_by'  => null
             ],
             [
-                'status_name' => 'PAGARÁ',
+                'status_name' => 'Pagará',
                 'active'      => true,
                 'created_at'  => Carbon::now(),
                 'created_by'  => null
             ],
             [
-                'status_name' => 'COMPETENCIA',
+                'status_name' => 'Competencia',
                 'active'      => true,
                 'created_at'  => Carbon::now(),
                 'created_by'  => null
             ],
             [
-                'status_name' => 'PAGADO',
+                'status_name' => 'Pagado',
                 'active'      => true,
                 'created_at'  => Carbon::now(),
                 'created_by'  => null
             ],
             [
-                'status_name' => 'VOLVER A LLAMAR',
+                'status_name' => 'Volver a llamar',
                 'active'      => true,
                 'created_at'  => Carbon::now(),
                 'created_by'  => null

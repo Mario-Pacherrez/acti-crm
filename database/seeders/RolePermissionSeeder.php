@@ -81,32 +81,32 @@ class RolePermissionSeeder extends Seeder
         Permission::create([
             'path' => 'admin.leads.index',
             'name' => 'admin.leads.index'
-        ])->syncRoles([$role_admin, $role_marketing]);
+        ])->syncRoles([$role_admin]);
 
         Permission::create([
             'path' => 'admin.leads.create',
             'name' => 'admin.leads.create'
-        ])->syncRoles([$role_admin, $role_marketing]);
+        ])->syncRoles([$role_admin]);
 
         Permission::create([
             'path' => 'admin.leads.show',
             'name' => 'admin.leads.show'
-        ])->syncRoles([$role_admin, $role_marketing]);
+        ])->syncRoles([$role_admin]);
 
         Permission::create([
             'path' => 'admin.leads.edit',
             'name' => 'admin.leads.edit'
-        ])->syncRoles([$role_admin, $role_marketing]);
+        ])->syncRoles([$role_admin]);
 
         Permission::create([
             'path' => 'admin.leads.update',
             'name' => 'admin.leads.update'
-        ])->syncRoles([$role_admin, $role_marketing]);
+        ])->syncRoles([$role_admin]);
 
         Permission::create([
             'path' => 'admin.leads.destroy',
             'name' => 'admin.leads.destroy'
-        ])->syncRoles([$role_admin, $role_marketing]);
+        ])->syncRoles([$role_admin]);
 
 
         // ADMIN - SALES

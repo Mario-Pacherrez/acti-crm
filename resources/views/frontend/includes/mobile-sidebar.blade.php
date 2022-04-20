@@ -69,7 +69,6 @@
                     </a>
                 </li>
             @endcan--}}
-
         </ul>
         <ul>
             @can('admin.users.index')
@@ -110,7 +109,7 @@
                     </a>
                 </li>
 
-                @can('admin.leads.index')
+            @can('admin.leads.index')
                 <li class="relative px-6 py-3">
                     @if (request()->routeIs('admin.leads.*'))
                         <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
@@ -128,9 +127,9 @@
                         <span class="ml-4 text-base">Panel de Leads</span>
                     </a>
                 </li>
-                @endcan
+            @endcan
 
-                @can('admin.sales.index')
+            @can('admin.sales.index')
                 <li class="relative px-6 py-3">
                     @if(request()->routeIs('admin.sales.*'))
                         <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
@@ -148,7 +147,7 @@
                         <span class="ml-4 text-base">Panel de Ventas</span>
                     </a>
                 </li>
-                @endcan
+            @endcan
 
                 <li class="relative px-6 py-3">
                     @if(request()->routeIs('myleads.*'))

@@ -57,4 +57,9 @@ class ClientLead extends Model
     {
         return $this->hasMany(LeadDetail::class, 'fk_client_lead', 'id_client_lead');
     }
+
+    public function scopeSearch($query, $names)
+    {
+        return $query->where('names', 'LIKE', '%'.$names.'%');
+    }
 }

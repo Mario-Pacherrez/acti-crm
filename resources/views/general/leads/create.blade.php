@@ -18,7 +18,6 @@
                 <form method="post" action="{{ route('leads.store') }}">
                     @csrf
                     <div class="shadow overflow-hidden sm:rounded-md">
-
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="channels" class="block font-medium text-sm text-gray-700">Medios</label>
                             <select name="channels" id="channels" class="form-select block rounded-md shadow-sm mt-1 block w-full" required>
@@ -55,7 +54,7 @@
 
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="email" class="block font-medium text-sm text-gray-700">Email</label>
-                            <input type="email" name="email" id="email" class="form-input rounded-md shadow-sm mt-1 block w-full" value="{{ old('email', '') }}"/>
+                            <input type="email" name="email" id="email" class="form-input rounded-md shadow-sm mt-1 block w-full" value="{{ old('email', '') }}" />
                             @error('email')
                             <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -63,7 +62,7 @@
 
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="phone" class="block font-medium text-sm text-gray-700">Teléfono/Celular</label>
-                            <input type="text" name="phone" id="phone" class="form-input rounded-md shadow-sm mt-1 block w-full" value="{{ old('phone', '') }}"/>
+                            <input type="text" name="phone" id="phone" class="form-input rounded-md shadow-sm mt-1 block w-full" value="{{ old('phone', '') }}" />
                             @error('phone')
                             <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror

@@ -49,7 +49,7 @@
                     <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                     @foreach ($leads as $lead)
                         <tr class="text-gray-700 dark:text-gray-400 hover:bg-gray-200">
-                            <td class="px-4 py-3 text-sm border-r text-center"></td>
+                            <td class="px-4 py-3 text-sm border-r text-center">{{ ($leads->currentPage() - 1) * $leads->perPage() + $loop->iteration }}</td>
 
                             <td class="px-1 py-3 text-sm text-center">{{ $lead->created_at->format('d/m/Y') }}</td>
 
@@ -103,6 +103,13 @@
 
             <div class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
                 <span class="flex items-center col-span-3"></span>
+                <span class="col-span-2"></span>
+                <!-- Pagination -->
+                <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
+                    <nav aria-label="Table navigation">
+                        {{ $leads->links() }}
+                    </nav>
+                </span>
             </div>
         </div>
     </div>

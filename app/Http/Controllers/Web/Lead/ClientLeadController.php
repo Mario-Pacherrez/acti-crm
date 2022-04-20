@@ -22,12 +22,13 @@ class ClientLeadController extends Controller
     public function index()
     {
         // $leads = ClientLead::paginate(2);
-        $leads = ClientLead::all();
+        /*$leads = ClientLead::orderBy('created_at', 'desc')->paginate(10);
         $leads->each(function ($leads) {
             $leads->channel;
             $leads->users;
-        });
-        return view('admin.leads.index', compact('leads'))->with('leads', $leads);
+        });*/
+        return view('admin.leads.index');
+        //return view('admin.leads.index', compact('leads'))->with('leads', $leads);
     }
 
     public function create()

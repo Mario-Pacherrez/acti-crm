@@ -21,7 +21,7 @@ class LeadsController extends Controller
 {
     public function index()
     {
-        $leads = ClientLead::where('created_by', '=', Auth::id())->get();
+        $leads = ClientLead::orderBy('created_at', 'desc')->where('created_by', '=', Auth::id())->paginate(10);
         $leads->each(function ($leads) {
             $leads->channel;
             $leads->users;

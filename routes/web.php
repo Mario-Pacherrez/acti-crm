@@ -67,3 +67,8 @@ Route::group(['middleware' => 'auth'], function () {
     return Artisan::call('migrate', ["--force" => true ]);
 });
  */
+/*Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('cache:clear');
+    // return what you want
+    return $exitCode;
+});*/
