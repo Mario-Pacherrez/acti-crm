@@ -13,7 +13,7 @@ class LeadsIndex extends Component
 
     public function render()
     {
-        $leads = ClientLead::orderBy('created_at', 'desc')->paginate(4);
+        $leads = ClientLead::orderBy('created_at', 'desc')->paginate(10);
         $leads->each(function ($leads) {
             $leads->channel;
             $leads->users;

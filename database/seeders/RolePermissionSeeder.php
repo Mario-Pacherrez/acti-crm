@@ -210,6 +210,40 @@ class RolePermissionSeeder extends Seeder
             'name' => 'myleads.destroy'
         ])->syncRoles([$role_admin, $role_marketing, $role_seller]);
 
+
+
+
+        Permission::create([
+            'path' => 'details.index',
+            'name' => 'details.index'
+        ])->syncRoles([$role_admin, $role_marketing, $role_seller]);
+
+        Permission::create([
+            'path' => 'details.create',
+            'name' => 'details.create'
+        ])->syncRoles([$role_admin, $role_marketing, $role_seller]);
+
+        Permission::create([
+            'path' => 'details.show',
+            'name' => 'details.show'
+        ])->syncRoles([$role_admin, $role_marketing, $role_seller]);
+
+        Permission::create([
+            'path' => 'details.edit',
+            'name' => 'details.edit'
+        ])->syncRoles([$role_admin, $role_marketing, $role_seller]);
+
+        Permission::create([
+            'path' => 'details.update',
+            'name' => 'details.update'
+        ])->syncRoles([$role_admin, $role_marketing, $role_seller]);
+
+        Permission::create([
+            'path' => 'details.destroy',
+            'name' => 'details.destroy'
+        ])->syncRoles([$role_admin, $role_marketing, $role_seller]);
+
+
         /*
         Permission::create([
             'path' => 'admin.users.create',

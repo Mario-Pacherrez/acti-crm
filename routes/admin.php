@@ -4,9 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Web\Admin\HomeController;
 use App\Http\Controllers\Web\Admin\User\UserController;
+use App\Http\Controllers\Web\Admin\Leads\ClientLeadController;
 use App\Http\Controllers\Web\Admin\Sales\SalesController;
-use App\Http\Controllers\Web\Lead\ClientLeadController;
-
 use App\Http\Controllers\Web\Admin\Utility\SearchLeadsController;
 
 /*Route::get('/', function () {
@@ -19,9 +18,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('leads', ClientLeadController::class)->names('admin.leads');
     Route::resource('sales', SalesController::class)->only(['index', 'show','edit', 'update'])->names('admin.sales');
 
-    //Route::resource('leads', ClientLeadController::class)->names('admin.leads');
-    /*Route::get('', [HomeController::class, 'index'])->name('admin.home');
-    Route::resource('users', UserController::class)->names('admin.users');
-    Route::resource('leads', ClientLeadController::class)->names('admin.leads');*/
-    Route::get('/search', [SearchLeadsController::class, 'search'])->name('web.search');
+    //Route::get('details', [ClientLeadController::class, 'detailsIndex'])->name('admin.details');
+    // Route::get('/search', [SearchLeadsController::class, 'search'])->name('web.search');
 });
