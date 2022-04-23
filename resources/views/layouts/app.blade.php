@@ -18,6 +18,9 @@
 
         <link rel="stylesheet" href="{{ asset("css/acti.css") }}">
 
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+        {{--<link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.2/dist/flowbite.min.css" />--}}
+
         @livewireStyles
 
         <!-- Scripts -->
@@ -56,5 +59,37 @@
 
         @livewireScripts
 
+        <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+        <script>
+
+            var picker = new Pikaday({
+                field: document.getElementById('start'),
+                format: 'dd/mm/YYYY',
+                toString(start, format) {
+                    // you should do formatting based on the passed format,
+                    // but we will just return 'D/M/YYYY' for simplicity
+                    const day = start.getDate();
+                    const month = start.getMonth() + 1;
+                    const year = start.getFullYear();
+                    return `${year}-${month}-${day}`;
+                },
+            });
+
+            var picker2 = new Pikaday({
+                field: document.getElementById('end'),
+                format: 'dd/mm/YYYY',
+                toString(end, format) {
+                    // you should do formatting based on the passed format,
+                    // but we will just return 'D/M/YYYY' for simplicity
+                    const day = end.getDate();
+                    const month = end.getMonth() + 1;
+                    const year = end.getFullYear();
+                    return `${year}-${month}-${day}`;
+                }
+            });
+        </script>
+
+
+        {{--<script src="https://unpkg.com/flowbite@1.4.2/dist/datepicker.js"></script>--}}
     </body>
 </html>

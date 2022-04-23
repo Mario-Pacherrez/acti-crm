@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Carbon\Carbon;
 
 class ClientLead extends Model
 {
@@ -24,6 +25,8 @@ class ClientLead extends Model
         'phone',
         'courses_name',
         'active',
+        'created_at',
+        'updated_at',
     ];
 
     protected $hidden = [
@@ -61,5 +64,10 @@ class ClientLead extends Model
     public function scopeSearch($query, $names)
     {
         return $query->where('names', 'LIKE', '%'.$names.'%');
+    }
+
+    public function  setDate($value)
+    {
+        $this->attributes['created_at'] = Carbon::createFromFormat('Y/m/d', $value)->format('d/m/Y');
     }
 }

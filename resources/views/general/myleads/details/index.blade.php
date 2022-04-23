@@ -58,7 +58,7 @@
                                     @if(is_null($detail->created_at))
                                         <td class="px-4 py-3 text-sm">{{ "-" }}</td>
                                     @else
-                                        <td class="px-4 py-3 text-sm">{{ $detail->created_at->format('d/m/Y') }}</td>
+                                        <td class="px-4 py-3 text-sm">{{ $detail->created_at->format('d/m/Y')." - ".$detail->created_at->format('H:i:s') }}</td>
                                     @endif
 
                                     {{--@if(is_null($detail->updated_at))
