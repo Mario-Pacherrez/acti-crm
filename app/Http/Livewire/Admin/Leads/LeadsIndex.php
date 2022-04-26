@@ -8,7 +8,7 @@ use Livewire\Component;
 use App\Models\ClientLead;
 
 use Livewire\WithPagination;
-use function PHPUnit\Framework\isEmpty;
+use Carbon\Carbon;
 
 class LeadsIndex extends Component
 {
@@ -48,6 +48,11 @@ class LeadsIndex extends Component
                 ->where('user_x_client_lead.user_id', '=', $this->byAdviser)
                 ->orderBy('clients_leads.created_at', 'desc')
                 ->paginate(10);
+        } else if ($this->date_start && $this->date_end && is_null($this->byAdviser)) {
+            $leads = ClientLead::orderBy('clients_leads.created_at', 'desc')
+                ->whereDate('clients_leads.created_at', '>=', $this->date_start)
+                ->whereDate('clients_leads.created_at', '<=', $this->date_end)
+                ->paginate(10);
         } else if ($this->date_start && $this->date_end && $this->byAdviser == '0') {
             $leads = ClientLead::orderBy('clients_leads.created_at', 'desc')
                 ->whereDate('clients_leads.created_at', '>=', $this->date_start)
@@ -69,6 +74,5 @@ class LeadsIndex extends Component
             $leads->users;
         });
         return view('livewire.admin.leads.leads-index', compact('leads'))->with('leads', $leads)->with('users', $users);
-        //return view('admin.leads.index', compact('leads'))->with('leads', $leads);
     }
 }

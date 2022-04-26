@@ -5,6 +5,10 @@
                 {{ __('Registrar Detalle') }}
             </h2>
 
+            <div class="mb-8">
+                <a href="{{ route('myleads.details.show', $id_client_lead) }}" class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">Volver a la Lista de Detalles</a>
+            </div>
+
             <div class="mt-5 md:mt-0 md:col-span-2">
                 <form method="post" action="{{ route('myleads.details.store', $id_client_lead) }}">
                     @csrf

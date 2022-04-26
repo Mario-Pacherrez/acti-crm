@@ -35,6 +35,15 @@ class ClientLead extends Model
         'deleted_by',
     ];
 
+    /*protected $casts = [
+        'created_at' => 'datetime:Y-m-d',
+    ];*/
+
+    /*public function setCreatedAtAttribute($value)
+    {
+        $this->attributes['created_at'] = Carbon::createFromFormat('d/m/Y H:i:s', $value)->format('Y-m-d H:i:s');
+    }*/
+
     // Relationships
     /*public function channels(): BelongsToMany
     {

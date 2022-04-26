@@ -64,7 +64,10 @@
 
             var picker = new Pikaday({
                 field: document.getElementById('start'),
-                format: 'dd/mm/YYYY',
+                onSelect: function() {
+                    picker2.setMinDate(this.getDate());
+                },
+                format: 'D/M/YYYY',
                 toString(start, format) {
                     // you should do formatting based on the passed format,
                     // but we will just return 'D/M/YYYY' for simplicity
@@ -77,7 +80,10 @@
 
             var picker2 = new Pikaday({
                 field: document.getElementById('end'),
-                format: 'dd/mm/YYYY',
+                onSelect: function() {
+                    picker.setMaxDate(this.getDate());
+                },
+                format: 'D/M/YYYY',
                 toString(end, format) {
                     // you should do formatting based on the passed format,
                     // but we will just return 'D/M/YYYY' for simplicity
@@ -88,7 +94,6 @@
                 }
             });
         </script>
-
 
         {{--<script src="https://unpkg.com/flowbite@1.4.2/dist/datepicker.js"></script>--}}
     </body>

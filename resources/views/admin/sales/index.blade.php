@@ -16,7 +16,7 @@
 
         <div class="w-full overflow-hidden rounded-lg shadow-xs">
             <div class="w-full overflow-x-auto">
-                <table class="w-full whitespace-no-wrap">
+                <table class="w-full">
                     <thead>
                     <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                         <th class="px-1 py-3 border-r text-center">
@@ -103,8 +103,8 @@
                                 <td class="px-1 py-3 text-sm border-r text-center">{{ $user->pivot->updated_at->format('d/m/Y') }}</td>
                             @endforeach
 
-                            <td class="px-1 py-3">
-                                <div class="flex items-center space-x-4 text-sm justify-center">
+                            <td class="py-3">
+                                <div class="flex items-center space-x-2 text-sm justify-center">
                                     <a href="{{ route('admin.sales.show', $lead->id_client_lead) }}" class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" aria-label="Ver" title="Ver">
                                         <svg class="w-5 h-5"
                                              aria-hidden="true"
@@ -127,6 +127,20 @@
                                              viewBox="0 0 24 24"
                                              xmlns="http://www.w3.org/2000/svg">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+                                        </svg>
+                                    </a>
+
+                                    <a href="{{ route('admin.sales.details.show', $lead->id_client_lead) }}"
+                                       class="cursor-pointer flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-amber-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
+                                       aria-label="Detalles"
+                                       title="Detalles">
+                                        <svg class="w-5 h-5"
+                                             aria-hidden="true"
+                                             fill="none"
+                                             stroke="currentColor"
+                                             viewBox="0 0 24 24"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
                                         </svg>
                                     </a>
 

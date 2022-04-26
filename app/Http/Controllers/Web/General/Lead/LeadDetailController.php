@@ -46,9 +46,9 @@ class LeadDetailController extends Controller
     public function show($id_client_lead)
     {
         $details = LeadDetail::orderBy('created_at', 'desc')->where('leads_details.fk_client_lead', '=', $id_client_lead)->paginate(10);
-        $details->each(function ($details) {
+        /*$details->each(function ($details) {
             $details->leadsDetails;
-        });
+        });*/
         return view('general.myleads.details.index', compact('id_client_lead'))->with('details', $details);
     }
 

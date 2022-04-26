@@ -10,17 +10,22 @@
                 {{ __('Detalles del Leads') }}
             </h2>
 
-            <div class="block mb-8">
-                <a href="{{ route('myleads.details.create', $id_client_lead) }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Registrar Detalle</a>
-            </div>
-
-            {{--<div class="block mb-8">
-                @livewire('general.my-leads.details-create', ['id_client_lead' => $id_client_lead])
-            </div>--}}
-            {{--@livewire('general.my-leads.details-show', ['lead' => $lead], key($lead->id_client_lead))--}}
-
-            <div class="block mb-8">
-                <a href="{{ route('myleads.index') }}" class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">Volver a la lista</a>
+            <div class="flex flex-row items-center justify-between mb-8">
+                <div>
+                    <a href="{{ route('myleads.index') }}" class="flex items-center bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">
+                        <svg class="w-4 h-4"
+                             aria-hidden="true"
+                             fill="none"
+                             stroke="currentColor"
+                             viewBox="0 0 24 24"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg>&nbsp;Volver a Lista de Mis Leads
+                    </a>
+                </div>
+                <div>
+                    <a href="{{ route('myleads.details.create', $id_client_lead) }}" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded">Registrar Detalles</a>
+                </div>
             </div>
 
             <div class="w-full overflow-hidden rounded-lg shadow-xs">

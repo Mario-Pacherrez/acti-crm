@@ -58,7 +58,7 @@
                     <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                     @foreach ($leads as $lead)
                         <tr class="text-gray-700 dark:text-gray-400 hover:bg-gray-200">
-                            <td class="pl-2 py-3 text-sm border-r text-center">{{ ($leads->currentPage() - 1) * $leads->perPage() + $loop->iteration }}</td>
+                            <td class="px-1 py-3 text-sm border-r text-center">{{ ($leads->currentPage() - 1) * $leads->perPage() + $loop->iteration }}</td>
 
                             <td class="px-0.5 py-3 text-sm text-center">{{ $lead->created_at->format('d/m/Y') }}</td>
 
@@ -111,7 +111,10 @@
                                         </svg>
                                     </a>
 
-                                    <a href="{{ route('myleads.edit', $lead->id_client_lead) }}" class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" aria-label="Editar" title="Editar">
+                                    <a href="{{ route('myleads.edit', $lead->id_client_lead) }}"
+                                       class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
+                                       aria-label="Editar"
+                                       title="Editar">
                                         <svg class="w-5 h-5"
                                              aria-hidden="true"
                                              fill="none"
@@ -122,7 +125,6 @@
                                         </svg>
                                     </a>
 
-                                    {{--href="{{ route('details.show', $lead->id_client_lead) }}"--}}
                                     <a href="{{ route('myleads.details.show', $lead->id_client_lead) }}"
                                        class="cursor-pointer flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-amber-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
                                        aria-label="Detalles"
