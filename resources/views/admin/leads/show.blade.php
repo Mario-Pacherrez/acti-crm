@@ -56,7 +56,11 @@
                                         Email
                                     </th>
                                     <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-900 bg-white divide-y divide-gray-200">
-                                        {{ $lead->email }}
+                                        @if(is_null($lead->email))
+                                            {{ "-" }}
+                                        @else
+                                            {{ $lead->email }}
+                                        @endif
                                     </td>
                                 </tr>
                                 <tr class="border-b">
@@ -64,7 +68,11 @@
                                         Teléfono/Celular
                                     </th>
                                     <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-900 bg-white divide-y divide-gray-200">
-                                        {{ $lead->phone }}
+                                        @if(is_null($lead->phone))
+                                            {{ "-" }}
+                                        @else
+                                            {{ $lead->phone }}
+                                        @endif
                                     </td>
                                 </tr>
                                 <tr class="border-b">

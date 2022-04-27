@@ -6,7 +6,7 @@ use App\Http\Controllers\Web\Admin\HomeController;
 use App\Http\Controllers\Web\Admin\User\UserController;
 use App\Http\Controllers\Web\Admin\Leads\ClientLeadController;
 use App\Http\Controllers\Web\Admin\Sales\SalesController;
-use App\Http\Controllers\Web\Admin\Utility\SearchLeadsController;
+use App\Http\Controllers\Web\Admin\Sales\LeadDetailController;
 
 /*Route::get('/', function () {
     return redirect(route('login'));
@@ -17,7 +17,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('users', UserController::class)->names('admin.users');
     Route::resource('leads', ClientLeadController::class)->names('admin.leads');
     Route::resource('sales', SalesController::class)->only(['index', 'show','edit', 'update'])->names('admin.sales');
-
-    //Route::get('details', [ClientLeadController::class, 'detailsIndex'])->name('admin.details');
-    // Route::get('/search', [SearchLeadsController::class, 'search'])->name('web.search');
+    Route::get('sales/{id_client_lead}/details', [LeadDetailController::class, 'show'])->name('admin.sales.details.show');
 });

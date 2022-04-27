@@ -21,14 +21,15 @@ class MyLeadsController extends Controller
 {
     public function index()
     {
-        $leads = ClientLead::join('user_x_client_lead', 'clients_leads.id_client_lead', '=', 'user_x_client_lead.fk_client_lead')
+        return view('general.myleads.index');
+        /*$leads = ClientLead::join('user_x_client_lead', 'clients_leads.id_client_lead', '=', 'user_x_client_lead.fk_client_lead')
             ->where('user_x_client_lead.user_id', '=', Auth::id())->orderBy('user_x_client_lead.updated_at', 'desc')->paginate(10);
         $leads->each(function ($leads) {
             $leads->channel;
             $leads->users;
             $leads->leadStatus;
         });
-        return view('general.myleads.index', compact('leads'))->with('leads', $leads);
+        return view('general.myleads.index', compact('leads'))->with('leads', $leads);*/
     }
 
     public function create()
