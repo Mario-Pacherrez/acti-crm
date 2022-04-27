@@ -8,7 +8,6 @@ use Livewire\Component;
 use App\Models\ClientLead;
 
 use Livewire\WithPagination;
-use function PHPUnit\Framework\isEmpty;
 
 class LeadsIndex extends Component
 {

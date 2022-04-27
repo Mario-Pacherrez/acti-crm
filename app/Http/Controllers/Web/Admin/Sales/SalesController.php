@@ -19,15 +19,17 @@ class SalesController extends Controller
 {
     public function index()
     {
-        $leads = ClientLead::join('user_x_client_lead', 'clients_leads.id_client_lead', '=', 'user_x_client_lead.fk_client_lead')
+/*        $leads = ClientLead::join('user_x_client_lead', 'clients_leads.id_client_lead', '=', 'user_x_client_lead.fk_client_lead')
             ->where('user_x_client_lead.user_id', '!=', 2)->orderBy('clients_leads.created_at', 'desc')->paginate(10);
         $leads->each(function ($leads) {
             $leads->channel;
             $leads->users;
             $leads->leadStatus;
-        });
-        return view('admin.sales.index', compact('leads'))->with('leads', $leads);
+        });*/
+        //return view('admin.sales.index', compact('leads'))->with('leads', $leads);
+        return view('admin.sales.index');
     }
+
 
     /*public function create()
     {
