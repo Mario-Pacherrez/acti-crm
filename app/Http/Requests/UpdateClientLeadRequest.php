@@ -27,8 +27,8 @@ class UpdateClientLeadRequest extends FormRequest
             /*'sellers' => 'required',*/
             'channels' => 'required',
             'names' => 'required|string|max:150',
-            'email' => 'required|string|max:150',
-            'phone' => 'required|string|max:100',
+            'email' => 'max:150',
+            'phone' => 'max:100',
             'courses_name' => 'required|string|max:100',
         ];
     }
