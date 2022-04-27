@@ -19,9 +19,6 @@ use App\Http\Controllers\Web\General\Lead\LeadsController;
 use App\Http\Controllers\Web\General\Lead\MyLeadsController;
 use App\Http\Controllers\Web\General\Lead\LeadDetailController;
 
-use App\Http\Livewire\General\MyLeads\DetailsIndex;
-use App\Http\Livewire\General\MyLeads\DetailsShow;
-
 Route::get('/', function () {
     //return view('welcome');
     return redirect(route('login'));

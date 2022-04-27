@@ -73,7 +73,7 @@
 
             <div class="w-full overflow-x-auto">
                 @if($leads->count())
-                    <table class="w-full whitespace-no-wrap">
+                    <table class="w-full">
                         <thead>
                         <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                             <th class="px-1 py-3 border-r text-center">
@@ -179,7 +179,9 @@
                         </tbody>
                     </table>
                     <div class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
-                        <span class="flex items-center col-span-3"></span>
+                        <span class="flex items-center col-span-3">
+                            {{ "Total de Resultados: ".$leads->total() }}
+                        </span>
                         <span class="col-span-2"></span>
                         <!-- Pagination -->
                         <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
