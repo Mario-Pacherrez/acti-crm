@@ -62,6 +62,7 @@
         <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
         <script>
 
+            /*Para  panel de leads */
             var picker = new Pikaday({
                 field: document.getElementById('start'),
                 onSelect: function() {
@@ -94,6 +95,26 @@
                 }
             });
 
+            /*Para  panel de ventas */
+            var picker3 = new Pikaday({
+                field: document.getElementById('start_sales'),
+                format: 'dd/mm/YYYY',
+                toString(start_sales, format) {
+                    const day = start_sales.getDate();
+                    const month = start_sales.getMonth() + 1;
+                    const year = start_sales.getFullYear();
+                    return `${year}-${month}-${day}`;
+                },
+            });
+            var picker4 = new Pikaday({
+                field: document.getElementById('end_sales'),
+                format: 'dd/mm/YYYY',
+                toString(end_sales, format) {
+                    const day = end_sales.getDate();
+                    const month = end_sales.getMonth() + 1;
+                    const year = end_sales.getFullYear();
+                },
+            });
 
             /*Para Mis Leads*/
             var start_my_leads = new Pikaday({
@@ -124,6 +145,7 @@
                     const day = end_my_leads.getDate();
                     const month = end_my_leads.getMonth() + 1;
                     const year = end_my_leads.getFullYear();
+
                     return `${year}-${month}-${day}`;
                 },
             });
