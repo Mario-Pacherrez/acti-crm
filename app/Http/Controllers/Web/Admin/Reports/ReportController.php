@@ -1,31 +1,28 @@
 <?php
 
-namespace App\Http\Controllers\Web\General\Sales;
+namespace App\Http\Controllers\Web\Admin\Reports;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\StoreClientLeadRequest;
-use App\Http\Requests\UpdateClientLeadRequest;
 
 use App\Models\User;
 use App\Models\Channel;
 use App\Models\ClientLead;
 use App\Models\LeadStatus;
-use App\Models\LeadDetail;
-use App\Models\UserClientLeadPivot;
-use Spatie\Permission\Models\Role;
 
 use Carbon\Carbon;
 
-class LeadDetailController extends Controller
+class ReportController extends Controller
 {
-    public function index(ClientLead $details)
+    public function __construct()
     {
-        /*$details->each(function ($details) {
-            $details->leadsDetails;
-        });
-        return view('general.sales.details.index', compact('details'))->with('details', $details);*/
+        $this->middleware('can:admin.reports.index');
+    }
+
+    public function index()
+    {
+        return view('admin.reports.index');
     }
 
     public function create()

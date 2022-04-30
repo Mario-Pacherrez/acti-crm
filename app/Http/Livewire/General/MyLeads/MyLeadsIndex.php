@@ -34,31 +34,36 @@ class MyLeadsIndex extends Component
         $channels = Channel::all();
 
         if ($this->date_start_my_leads && $this->date_end_my_leads && $this->byStatusInMyLeads > '0') {
-            $leads = ClientLead::join('user_x_client_lead', 'clients_leads.id_client_lead', '=', 'user_x_client_lead.fk_client_lead')
+            $leads = ClientLead::select('clients_leads.created_at', 'clients_leads.*')
+                ->leftJoin('user_x_client_lead', 'clients_leads.id_client_lead', '=', 'user_x_client_lead.fk_client_lead')
                 ->where('user_x_client_lead.user_id', '=', Auth::id())
                 ->where('clients_leads.fk_lead_status', '=', $this->byStatusInMyLeads)
                 ->whereDate('clients_leads.created_at', '>=', $this->date_start_my_leads)
                 ->whereDate('clients_leads.created_at', '<=', $this->date_end_my_leads)
                 ->orderBy('clients_leads.created_at', 'desc')->paginate(10);
         } else if ($this->byStatusInMyLeads > '0') {
-            $leads = ClientLead::join('user_x_client_lead', 'clients_leads.id_client_lead', '=', 'user_x_client_lead.fk_client_lead')
+            $leads = ClientLead::select('clients_leads.created_at', 'clients_leads.*')
+                ->leftJoin('user_x_client_lead', 'clients_leads.id_client_lead', '=', 'user_x_client_lead.fk_client_lead')
                 ->where('user_x_client_lead.user_id', '=', Auth::id())
                 ->where('clients_leads.fk_lead_status', '=', $this->byStatusInMyLeads)
                 ->orderBy('clients_leads.created_at', 'desc')->paginate(10);
         } else if ($this->date_start_my_leads && $this->date_end_my_leads && is_null($this->byStatusInMyLeads)) {
-            $leads = ClientLead::join('user_x_client_lead', 'clients_leads.id_client_lead', '=', 'user_x_client_lead.fk_client_lead')
+            $leads = ClientLead::select('clients_leads.created_at', 'clients_leads.*')
+                ->leftJoin('user_x_client_lead', 'clients_leads.id_client_lead', '=', 'user_x_client_lead.fk_client_lead')
                 ->where('user_x_client_lead.user_id', '=', Auth::id())
                 ->whereDate('clients_leads.created_at', '>=', $this->date_start_my_leads)
                 ->whereDate('clients_leads.created_at', '<=', $this->date_end_my_leads)
                 ->orderBy('clients_leads.created_at', 'desc')->paginate(10);
         } else if ($this->date_start_my_leads && $this->date_end_my_leads && $this->byStatusInMyLeads == '0') {
-            $leads = ClientLead::join('user_x_client_lead', 'clients_leads.id_client_lead', '=', 'user_x_client_lead.fk_client_lead')
+            $leads = ClientLead::select('clients_leads.created_at', 'clients_leads.*')
+                ->leftJoin('user_x_client_lead', 'clients_leads.id_client_lead', '=', 'user_x_client_lead.fk_client_lead')
                 ->where('user_x_client_lead.user_id', '=', Auth::id())
                 ->whereDate('clients_leads.created_at', '>=', $this->date_start_my_leads)
                 ->whereDate('clients_leads.created_at', '<=', $this->date_end_my_leads)
                 ->orderBy('clients_leads.created_at', 'desc')->paginate(10);
         } else {
-            $leads = ClientLead::join('user_x_client_lead', 'clients_leads.id_client_lead', '=', 'user_x_client_lead.fk_client_lead')
+            $leads = ClientLead::select('clients_leads.created_at', 'clients_leads.*')
+                ->leftJoin('user_x_client_lead', 'clients_leads.id_client_lead', '=', 'user_x_client_lead.fk_client_lead')
                 ->where('user_x_client_lead.user_id', '=', Auth::id())
                 ->orderBy('clients_leads.created_at', 'desc')->paginate(10);
         }

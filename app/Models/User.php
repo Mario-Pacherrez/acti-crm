@@ -31,6 +31,8 @@ class User extends Authenticatable
     protected $table = 'users';
     protected $primaryKey = 'id';
 
+    public $a, $b;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -92,12 +94,13 @@ class User extends Authenticatable
 
     public function clientsLeads(): BelongsToMany
     {
-        return $this->belongsToMany(ClientLead::class, 'user_x_client_lead', 'user_id', 'fk_client_lead');
+        return $this->belongsToMany(ClientLead::class, 'user_x_client_lead', 'user_id', 'fk_client_lead')->withTimestamps();
+            //->wherePivotBetween('created_at', [$this->a, $this->b]);
     }
 
-    /*
-    public function leadsStatus(): BelongsTo
+    public function scopeFilterDateAssigned($query, $date_start, $date_end)
     {
-        return $this->belongsTo(LeadStatus::class, '', '');
-    }*/
+        return $query->whereDate('user_x_client_lead.created_at', '>=', $date_start)
+            ->whereDate('user_x_client_lead.created_at', '<=', $date_end);
+    }
 }

@@ -16,8 +16,8 @@ use Illuminate\Support\Facades\Artisan;
 
 /* Package: Client Lead */
 use App\Http\Controllers\Web\General\Lead\LeadsController;
-use App\Http\Controllers\Web\General\Lead\MyLeadsController;
 use App\Http\Controllers\Web\General\Lead\LeadDetailController;
+use App\Http\Controllers\Web\General\Lead\MyLeadsController;
 
 Route::get('/', function () {
     //return view('welcome');
@@ -60,13 +60,16 @@ Route::get('/run-migrations', function () {
     return Artisan::call('migrate', ["--force" => true ]);
 });*/
 
-/*
- * Route::get('/run-migrations', function () {
-    return Artisan::call('migrate', ["--force" => true ]);
-});
- */
 /*Route::get('/clear-cache', function() {
     $exitCode = Artisan::call('cache:clear');
     // return what you want
     return $exitCode;
 });*/
+
+Route::get('/clear', function() {
+    Artisan::call('cache:clear');
+    Artisan::call('config:clear');
+    //Artisan::call('config:cache');
+    Artisan::call('view:clear');
+    return "Cleared!";
+});

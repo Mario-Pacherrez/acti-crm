@@ -20,6 +20,13 @@ use Carbon\Carbon;
 
 class LeadDetailController extends Controller
 {
+    public function __construct()
+    {
+        // admin.sales.details.index
+        // admin.sales.details.show
+        //$this->middleware('can:admin.sales.details.show');
+    }
+
     public function index(ClientLead $details)
     {
         /*$details->each(function ($details) {

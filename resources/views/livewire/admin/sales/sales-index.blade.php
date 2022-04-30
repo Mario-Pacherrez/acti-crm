@@ -1,6 +1,6 @@
 <div>
     <div class="w-full grid px-6 mx-auto sm:px-6 lg:px-8">
-        <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+        <h2 class="mt-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
             {{ __('Panel de Ventas') }}
         </h2>
 
@@ -30,9 +30,16 @@
                 </div>
             </div>
 
-            <div class="mb-5">
-                <input type="text" id="start_sales" wire:model.lazy="date_start_sales" autocomplete="off" placeholder="Fecha Inicio">
-                <input type="text" id="end_sales" wire:model.lazy="date_end_sales" autocomplete="off" placeholder="Fecha Fin">
+            <div class="mb-5 flex flex-row justify-start items-center justify-items-center">
+                <div class="mr-5">
+                    <label class="block font-medium text-sm text-gray-700">Fecha Inicio Registro:</label>
+                    <input type="text" id="start_sales" wire:model.lazy="date_start_sales" autocomplete="off" placeholder="Fecha Inicio Registro">
+                </div>
+
+                <div>
+                    <label class="block font-medium text-sm text-gray-700">Fecha Fin Registro:</label>
+                    <input type="text" id="end_sales" wire:model.lazy="date_end_sales" autocomplete="off" placeholder="Fecha Fin Registro">
+                </div>
             </div>
 
         </div>
@@ -151,6 +158,20 @@
                                                  viewBox="0 0 24 24"
                                                  xmlns="http://www.w3.org/2000/svg">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+                                            </svg>
+                                        </a>
+
+                                        <a href="{{ route('admin.sales.details.show', $lead->id_client_lead) }}"
+                                           class="cursor-pointer flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-amber-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
+                                           aria-label="Detalles"
+                                           title="Detalles">
+                                            <svg class="w-5 h-5"
+                                                 aria-hidden="true"
+                                                 fill="none"
+                                                 stroke="currentColor"
+                                                 viewBox="0 0 24 24"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
                                             </svg>
                                         </a>
 

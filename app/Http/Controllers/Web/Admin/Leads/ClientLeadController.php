@@ -20,6 +20,11 @@ use Carbon\Carbon;
 
 class ClientLeadController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:admin.leads.index');
+    }
+
     public function index()
     {
         return view('admin.leads.index');

@@ -6,7 +6,7 @@
     x-transition:leave-start="opacity-100"
     x-transition:leave-end="opacity-0"
     class="fixed inset-0 z-10 flex items-end bg-black bg-opacity-50 sm:items-center sm:justify-center"></div>
-<aside class="fixed inset-y-0 z-20 flex-shrink-0 w-56 mt-16 overflow-y-auto bg-white dark:bg-gray-800 md:hidden"
+<aside class="fixed inset-y-0 z-20 flex-shrink-0 w-52 mt-16 overflow-y-auto bg-white dark:bg-gray-800 md:hidden"
     x-show="isSideMenuOpen"
     x-transition:enter="transition ease-in-out duration-150"
     x-transition:enter-start="opacity-0 transform -translate-x-20"
@@ -166,6 +166,26 @@
                         <span class="ml-4 text-base">Mis Leads</span>
                     </a>
                 </li>
+
+            @can('admin.reports.index')
+                <li class="relative px-6 py-3">
+                    @if(request()->routeIs('admin.reports.*'))
+                        <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
+                    @endif
+                    <a class="inline-flex items-center w-full text-base font-bold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                       href="{{ route('admin.reports.index') }}">
+                        <svg class="w-5 h-5"
+                             aria-hidden="true"
+                             fill="none"
+                             stroke="currentColor"
+                             viewBox="0 0 24 24"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        <span class="ml-4 text-base">Reportes</span>
+                    </a>
+                </li>
+            @endcan
 
             {{--@can('admin.leads.index')
                 <li class="relative px-6 py-3">

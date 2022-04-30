@@ -1,4 +1,4 @@
-<aside class="z-20 hidden w-56 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
+<aside class="z-20 hidden w-52 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
     <div class="py-4 text-gray-500 dark:text-gray-400">
         <div class="text-center">
             <a class="text-lg font-bold text-gray-800 dark:text-gray-200" href="{{ route('dashboard') }}">
@@ -149,6 +149,27 @@
                         <span class="ml-4 text-base">Mis Leads</span>
                     </a>
                 </li>
+
+            @can('admin.reports.index')
+                <li class="relative px-6 py-3">
+                    @if(request()->routeIs('admin.reports.*'))
+                        <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
+                    @endif
+                    <a class="inline-flex items-center w-full text-base font-bold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                       href="{{ route('admin.reports.index') }}">
+                        <svg class="w-5 h-5"
+                             aria-hidden="true"
+                             fill="none"
+                             stroke="currentColor"
+                             viewBox="0 0 24 24"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        <span class="ml-4 text-base">Reportes</span>
+                    </a>
+                </li>
+            @endcan
+
         </ul>
     </div>
 </aside>

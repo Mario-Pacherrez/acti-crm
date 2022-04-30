@@ -47,9 +47,9 @@
                             <th class="px-1 py-3 border-r text-center">
                                 N°
                             </th>
-                            {{--<th class="px-0.5 py-3 text-center">
+                            <th class="px-0.5 py-3 text-center">
                                 Fecha Registro
-                            </th>--}}
+                            </th>
                             <th class="px-1 py-3">
                                 Estado
                             </th>
@@ -85,9 +85,9 @@
                             <tr class="text-gray-700 dark:text-gray-400 hover:bg-gray-200">
                                 <td class="px-1 py-3 text-sm border-r text-center">{{ ($leads->currentPage() - 1) * $leads->perPage() + $loop->iteration }}</td>
 
-                                {{--<td class="px-0.5 py-3 text-sm text-center">
+                                <td class="px-0.5 py-3 text-sm text-center">
                                     {{ $lead->created_at->format('d/m/Y') }}
-                                </td>--}}
+                                </td>
 
                                 <td class="px-1 py-3 text-sm capitalize">
                                     @if($lead->leadStatus->id_lead_status == '1')

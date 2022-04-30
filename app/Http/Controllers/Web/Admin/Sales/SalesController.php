@@ -17,6 +17,11 @@ use Carbon\Carbon;
 
 class SalesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:admin.sales.index');
+    }
+
     public function index()
     {
 /*        $leads = ClientLead::join('user_x_client_lead', 'clients_leads.id_client_lead', '=', 'user_x_client_lead.fk_client_lead')
